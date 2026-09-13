@@ -14,7 +14,7 @@
       --card-bg: #ffffff;
       --text: #0f172a;
       --muted: #475569;
-      --accent: #b91c1c; /* Red accent matching brand */
+      --accent: #b91c1c;
       --accent-hover: #991b1b;
       --navy: #0f172a;
       --border: #e2e8f0;
@@ -26,13 +26,11 @@
       color: var(--text);
     }
 
-    /* Image display containment fix */
     .img-contain {
       object-fit: contain;
       background-color: #f1f5f9;
     }
 
-    /* Page visibility animations */
     .view-page {
       display: none;
       opacity: 0;
@@ -50,7 +48,6 @@
       border-color: #b91c1c;
     }
 
-    /* Full Size Modal Styling */
     .modal {
       display: none;
       position: fixed;
@@ -131,7 +128,7 @@
         <div>
           <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
             <img 
-              src="Practical Plastic/snapshield/product and packaging 2.jpg" 
+              src="snapshield/product and packaging 2.jpg" 
               alt="SNAPSHIELD Magnetic Paint Protection"
               onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=SNAPSHIELD+Product+Image';"
               class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
@@ -163,7 +160,7 @@
         <div>
           <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
             <img 
-              src="Practical Plastic/snappost/flag 1.png" 
+              src="snappost/flag 01.png" 
               alt="SNAPPOST Interchangeable Fence Post Caps"
               onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=SNAPPOST+Product+Image';"
               class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
@@ -203,7 +200,7 @@
         <!-- Gallery / Image Box -->
         <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
           <img 
-            src="Practical Plastic/snapshield/product and packaging 2.jpg" 
+            src="snapshield/product and packaging 2.jpg" 
             alt="SNAPSHIELD Magnetic Paint Protection Detail"
             onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=SNAPSHIELD+Detail+Image';"
             class="w-full h-80 img-contain rounded-lg shadow-sm cursor-pointer"
@@ -245,7 +242,7 @@
             </li>
             <li class="flex items-start">
               <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
-              <span><strong>Durable & Reusable:</strong>3D printed with PETG filament for repeated contractor or DIY painter use.</span>
+              <span><strong>Durable & Reusable:</strong> 3D printed with PETG filament for repeated contractor or DIY painter use.</span>
             </li>
           </ul>
 
@@ -281,44 +278,44 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         <!-- Gallery / Image Box -->
         <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
-          <!-- Main Display Image (Clicking THIS opens full view) -->
+          <!-- Main Display Image -->
           <img 
             id="snappost-main-img"
-            src="Practical Plastic/snappost/flag_8.jpg" 
+            src="snappost/flag_8.jpg" 
             alt="SNAPPOST Fence Post Cap Detail"
             onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=SNAPPOST+Detail+Image';"
             class="w-full h-80 img-contain rounded-lg shadow-sm mb-3 cursor-pointer"
             onclick="openModal(this.src)"
           />
           
-          <!-- Image Gallery Thumbnails (Clicking ONLY swaps main viewer image) -->
+          <!-- Image Gallery Thumbnails -->
           <div class="grid grid-cols-5 gap-2 w-full">
             <img 
-              src="Practical Plastic/snappost/flag_8.jpg" 
+              src="snappost/flag_8.jpg" 
               alt="SNAPPOST Flag Cap"
               onclick="swapMainImage(this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
             />
             <img 
-              src="Practical Plastic/snappost/finial_1.jpg" 
+              src="snappost/finial_1.jpg" 
               alt="SNAPPOST Finial Cap"
               onclick="swapMainImage(this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
             />
             <img 
-              src="Practical Plastic/snappost/tiki_1b.jpg" 
-              alt="SNAPPOST Tiki Solar Cap"
+              src="snappost/flag 2.jpg" 
+              alt="SNAPPOST Flag 2 Cap"
               onclick="swapMainImage(this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
             />
             <img 
-              src="Practical Plastic/snappost/snappost_base_3.jpg" 
-              alt="SNAPPOST Base View 3"
+              src="snappost/snappost_base_2.jpg" 
+              alt="SNAPPOST Base View 2"
               onclick="swapMainImage(this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
             />
             <img 
-              src="Practical Plastic/snappost/snappost_base_1.jpg" 
+              src="snappost/snappost_base_1.jpg" 
               alt="SNAPPOST Base View 1"
               onclick="swapMainImage(this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
@@ -343,7 +340,6 @@
               <span class="text-slate-500">American Flag:</span>
               <span class="text-slate-900 font-extrabold text-base ml-1">$7.99 / ea</span>
             </div>
-
             <div class="flex justify-between items-center">
               <span class="text-slate-500">TIKI with solar light:</span>
               <span class="text-slate-900 font-extrabold text-base ml-1">$13.99 / ea</span>
@@ -355,7 +351,7 @@
             <div class="flex justify-between items-center">
               <span class="text-slate-500">Decorative finial:</span>
               <span class="text-slate-900 font-extrabold text-base ml-1">$6.99 / ea</span>
-           </div>
+            </div>
             <div class="flex justify-between items-center mt-2 pt-2 border-t border-slate-100">
               <span class="text-slate-500">Origin:</span>
               <span class="text-slate-900 font-semibold ml-1">USA Made</span>
@@ -550,7 +546,7 @@
               <span class="bg-slate-900 text-white text-xs rounded-full w-6 h-6 inline-flex items-center justify-center mr-2">3</span>
               SNAPPOST™ (Fence Post Caps)
             </span>
-            <span class="text-sm font-extrabold text-red-700">$13.99 / ea</span>
+            <span class="text-sm font-extrabold text-red-700">$12.99 / ea</span>
           </h3>
 
           <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
@@ -631,345 +627,137 @@
 
               </div>
             </div>
-
           </div>
         </div>
 
-        <!-- SECTION 4: Order Summary Calculation Box -->
-        <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-xl space-y-3">
-          <h3 class="text-lg font-bold border-b border-slate-800 pb-2 text-red-500 uppercase tracking-wider">
-            Order Summary & Breakdown
-          </h3>
-
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-400">Subtotal</span>
-            <span class="font-bold text-white" id="summarySubtotal">$0.00</span>
+        <!-- SECTION 4: Summary & Submit -->
+        <div class="bg-slate-900 text-white p-6 rounded-xl space-y-4">
+          <div class="flex justify-between items-center text-sm border-b border-slate-800 pb-2">
+            <span class="text-slate-400">Subtotal:</span>
+            <span id="summarySubtotal" class="font-bold">$0.00</span>
+          </div>
+          <div class="flex justify-between items-center text-sm border-b border-slate-800 pb-2">
+            <span class="text-slate-400">Estimated Shipping:</span>
+            <span id="summaryShipping" class="font-bold">$5.00</span>
+          </div>
+          <div class="flex justify-between items-center text-lg font-black">
+            <span>Total:</span>
+            <span id="summaryTotal" class="text-red-500">$5.00</span>
           </div>
 
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-400">Shipping (Flat Rate / Free over $50)</span>
-            <span class="font-bold text-white" id="summaryShipping">$0.00</span>
-          </div>
-
-          <div class="flex justify-between text-sm">
-            <span class="text-slate-400">Estimated Tax (8.625%)</span>
-            <span class="font-bold text-white" id="summaryTax">$0.00</span>
-          </div>
-
-          <div class="border-t border-slate-800 pt-3 flex justify-between items-center text-lg font-extrabold">
-            <span class="text-slate-200">Total Due:</span>
-            <span class="text-2xl text-red-500" id="summaryTotal">$0.00</span>
-          </div>
+          <button 
+            type="submit" 
+            class="w-full bg-red-700 hover:bg-red-800 text-white font-black py-3.5 px-6 rounded-xl shadow-lg transition-colors text-center text-base uppercase tracking-wider">
+            Complete Order
+          </button>
         </div>
 
-        <div>
-          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="notes">Custom Order Notes / Special Instructions</label>
-          <textarea 
-            id="notes" 
-            rows="3" 
-            placeholder="Mention specific post dimensions, color preferences, or special shipping requirements..."
-            class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-700 text-slate-900 text-sm"
-          ></textarea>
-        </div>
-
-        <!-- SECTION 5: Submit Button -->
-        <button 
-          type="submit" 
-          class="w-full bg-red-700 hover:bg-red-800 text-white font-black py-4 px-6 rounded-xl shadow-lg transition-colors text-lg tracking-wide uppercase"
-        >
-          Submit Order Request →
-        </button>
       </form>
-
-      <!-- Confirmation Feedback Modal / View -->
-      <div id="confirmState" class="hidden text-center py-10 space-y-4">
-        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 text-green-700 text-3xl font-bold">
-          ✓
-        </div>
-        <h3 class="text-3xl font-black text-slate-900">Order Request Created!</h3>
-        <p class="text-slate-600 text-sm max-w-md mx-auto">
-          Your default mail client is opening with your completed order summary. You can also contact us directly at <strong class="text-slate-900">practicalplastic3d@gmail.com</strong>.
-        </p>
-        <button onclick="resetOrderForm()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-8 rounded-xl text-sm">
-          Place Another Order
-        </button>
-      </div>
     </div>
   </section>
 
-  <!-- Full Size Image Modal -->
-  <div id="imageModal" class="modal" aria-hidden="true">
-    <button id="closeBtn" class="close-btn" aria-label="Exit full screen" onclick="closeModal()">&times;</button>
-    <img id="modalImage" class="modal-content" src="" alt="Full size preview">
+  <!-- Image Lightbox Modal -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <img class="modal-content" id="modalImg" alt="Enlarged view">
   </div>
 
-  <footer class="max-w-5xl mx-auto w-full bg-slate-900 text-white rounded-2xl p-6 md:p-8 text-center shadow-lg mt-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6 border-b border-slate-800 pb-6">
-      <div>
-        <h4 class="font-bold text-red-500 uppercase tracking-wider text-sm mb-1">Practical Solutions</h4>
-        <p class="text-slate-400 text-xs">Thoughtful products designed to make everyday jobs easier.</p>
-      </div>
-      <div>
-        <h4 class="font-bold text-red-500 uppercase tracking-wider text-sm mb-1">3D Designed & Printed</h4>
-        <p class="text-slate-400 text-xs">Designed with purpose. Printed with precision engineering.</p>
-      </div>
-      <div>
-        <h4 class="font-bold text-red-500 uppercase tracking-wider text-sm mb-1">Made in the USA</h4>
-        <p class="text-slate-400 text-xs">Proudly designed and manufactured with durable materials.</p>
-      </div>
-    </div>
-    
-    <p class="text-sm text-slate-300">
-      Have a question or custom 3D printing inquiry? 
-      <a href="mailto:practicalplastic3d@gmail.com" class="text-red-400 hover:text-red-300 font-bold underline ml-1">
-        practicalplastic3d@gmail.com
-      </a>
-    </p>
+  <footer class="text-center text-xs text-slate-500 mt-8 border-t border-slate-200 pt-6 max-w-5xl mx-auto w-full">
+    &copy; Practical Plastic. All rights reserved.
   </footer>
 
   <script>
-    // Constants & Pricing Definitions
-    const SNAPSHIELD_PRICE = 8.99;
-    const SNAPPOST_PRICE = 13.99;
-    const TAX_RATE = 0.08625; // 8.625% sales tax
-    const FLAT_SHIPPING = 4.99;
-    const FREE_SHIPPING_THRESHOLD = 50.00;
-
-    function swapMainImage(imgSrc) {
-      const mainImg = document.getElementById('snappost-main-img');
-      if (mainImg) {
-        mainImg.src = imgSrc;
-      }
-    }
-
-    function openModal(imgSrc) {
-      if (!imgSrc) return;
-      const modal = document.getElementById('imageModal');
-      const modalImg = document.getElementById('modalImage');
-      if (modal && modalImg) {
-        modalImg.src = imgSrc;
-        modal.style.display = 'flex';
-        modal.setAttribute('aria-hidden', 'false');
-      }
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('imageModal');
-      const modalImg = document.getElementById('modalImage');
-      if (modal) {
-        modal.style.display = 'none';
-        modal.setAttribute('aria-hidden', 'true');
-      }
-      if (modalImg) {
-        modalImg.src = '';
-      }
-    }
-
     function navigateTo(pageId) {
-      // Hide all page views
-      const pages = document.querySelectorAll('.view-page');
-      pages.forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.view-page').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
 
-      // Update active nav button styling
-      const navButtons = document.querySelectorAll('.nav-btn');
-      navButtons.forEach(btn => btn.classList.remove('active'));
+      const targetPage = document.getElementById(pageId);
+      const targetNav = document.getElementById('nav-' + pageId);
 
-      const currentNavBtn = document.getElementById('nav-' + pageId);
-      if (currentNavBtn) {
-        currentNavBtn.classList.add('active');
-      }
+      if (targetPage) targetPage.classList.add('active');
+      if (targetNav) targetNav.classList.add('active');
 
-      // Show target page
-      const targetPage = document.getElementById(pageId) || document.getElementById('home');
-      targetPage.classList.add('active');
-
-      // Scroll smoothly to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function navigateToOrder(productName) {
+    function navigateToOrder(product) {
       navigateTo('order');
-
-      const snapshieldCheck = document.getElementById('snapshieldEnable');
-      const snapshieldQty = document.getElementById('snapshieldQty');
-      const snappostCheck = document.getElementById('snappostEnable');
-      const snappostQty = document.getElementById('snappostQty');
-
-      if (productName === 'SNAPSHIELD') {
-        snapshieldCheck.checked = true;
-        if (parseInt(snapshieldQty.value) === 0) snapshieldQty.value = 1;
-      } else if (productName === 'SNAPPOST') {
-        snappostCheck.checked = true;
-        if (parseInt(snappostQty.value) === 0) snappostQty.value = 1;
+      if (product === 'SNAPSHIELD') {
+        const checkbox = document.getElementById('snapshieldEnable');
+        const qty = document.getElementById('snapshieldQty');
+        checkbox.checked = true;
+        if (parseInt(qty.value) === 0) qty.value = 1;
+      } else if (product === 'SNAPPOST') {
+        const checkbox = document.getElementById('snappostEnable');
+        const qty = document.getElementById('snappostQty');
+        checkbox.checked = true;
+        if (parseInt(qty.value) === 0) qty.value = 1;
       }
-
       calculateTotals();
     }
 
-    function toggleProduct(type) {
-      if (type === 'snapshield') {
-        const check = document.getElementById('snapshieldEnable');
-        const qty = document.getElementById('snapshieldQty');
-        if (check.checked && parseInt(qty.value) === 0) {
-          qty.value = 1;
-        } else if (!check.checked) {
-          qty.value = 0;
-        }
-      } else if (type === 'snappost') {
-        const check = document.getElementById('snappostEnable');
-        const qty = document.getElementById('snappostQty');
-        if (check.checked && parseInt(qty.value) === 0) {
-          qty.value = 1;
-        } else if (!check.checked) {
-          qty.value = 0;
-        }
+    function toggleProduct(prod) {
+      const checkbox = document.getElementById(prod + 'Enable');
+      const qtyInput = document.getElementById(prod + 'Qty');
+      if (checkbox.checked && parseInt(qtyInput.value) === 0) {
+        qtyInput.value = 1;
+      } else if (!checkbox.checked) {
+        qtyInput.value = 0;
       }
       calculateTotals();
+    }
+
+    function swapMainImage(src) {
+      document.getElementById('snappost-main-img').src = src;
+    }
+
+    function openModal(src) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      modal.style.display = 'flex';
+      modalImg.src = src;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
     }
 
     function calculateTotals() {
-      // SNAPSHIELD calculations
-      const snapshieldQty = Math.max(0, parseInt(document.getElementById('snapshieldQty').value) || 0);
-      const snapshieldSub = snapshieldQty * SNAPSHIELD_PRICE;
-      document.getElementById('snapshieldLineTotal').innerText = `$${snapshieldSub.toFixed(2)}`;
-      document.getElementById('snapshieldEnable').checked = snapshieldQty > 0;
+      const snapshieldPrice = 8.99;
+      const snappostPrice = 12.99;
 
-      // SNAPPOST calculations
-      const snappostQty = Math.max(0, parseInt(document.getElementById('snappostQty').value) || 0);
-      const snappostBaseSub = snappostQty * SNAPPOST_PRICE;
-      document.getElementById('snappostEnable').checked = snappostQty > 0;
+      const shieldEnable = document.getElementById('snapshieldEnable').checked;
+      const shieldQty = shieldEnable ? Math.max(0, parseInt(document.getElementById('snapshieldQty').value) || 0) : 0;
+      const shieldTotal = shieldQty * snapshieldPrice;
 
-      // Icon Add-ons calculations
-      let iconSub = 0;
-      if (snappostQty > 0) {
-        if (document.getElementById('iconFlag').checked) iconSub += parseFloat(document.getElementById('iconFlag').value) * snappostQty;
-        if (document.getElementById('iconSolar').checked) iconSub += parseFloat(document.getElementById('iconSolar').value) * snappostQty;
-        if (document.getElementById('iconFinial').checked) iconSub += parseFloat(document.getElementById('iconFinial').value) * snappostQty;
-      }
+      const postEnable = document.getElementById('snappostEnable').checked;
+      const postQty = postEnable ? Math.max(0, parseInt(document.getElementById('snappostQty').value) || 0) : 0;
+      const postBaseTotal = postQty * snappostPrice;
 
-      const snappostTotalLine = snappostBaseSub + iconSub;
-      document.getElementById('snappostLineTotal').innerText = `$${snappostTotalLine.toFixed(2)}`;
+      let topperTotal = 0;
+      ['iconFlag', 'iconSolar', 'iconFinial'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.checked) {
+          topperTotal += (parseFloat(el.value) || 0) * (postQty > 0 ? postQty : 1);
+        }
+      });
 
-      // Summary Calculations
-      const subtotal = snapshieldSub + snappostTotalLine;
-      let shipping = 0;
-      if (subtotal > 0) {
-        shipping = subtotal >= FREE_SHIPPING_THRESHOLD ? 0.00 : FLAT_SHIPPING;
-      }
+      const postTotal = postBaseTotal + (postEnable ? topperTotal : 0);
+      const subtotal = shieldTotal + postTotal;
+      const shipping = subtotal > 0 ? 5.00 : 0.00;
+      const total = subtotal + shipping;
 
-      const tax = subtotal * TAX_RATE;
-      const total = subtotal + shipping + tax;
-
-      // Render Summary Table
-      document.getElementById('summarySubtotal').innerText = `$${subtotal.toFixed(2)}`;
-      document.getElementById('summaryShipping').innerText = shipping === 0 && subtotal > 0 ? "FREE" : `$${shipping.toFixed(2)}`;
-      document.getElementById('summaryTax').innerText = `$${tax.toFixed(2)}`;
-      document.getElementById('summaryTotal').innerText = `$${total.toFixed(2)}`;
+      document.getElementById('snapshieldLineTotal').textContent = '$' + shieldTotal.toFixed(2);
+      document.getElementById('snappostLineTotal').textContent = '$' + postTotal.toFixed(2);
+      document.getElementById('summarySubtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('summaryShipping').textContent = '$' + shipping.toFixed(2);
+      document.getElementById('summaryTotal').textContent = '$' + total.toFixed(2);
     }
 
     function handleFormSubmit(e) {
       e.preventDefault();
-
-      const snapQty = parseInt(document.getElementById('snapshieldQty').value) || 0;
-      const postQty = parseInt(document.getElementById('snappostQty').value) || 0;
-
-      if (snapQty === 0 && postQty === 0) {
-        alert("Please select at least one SNAPSHIELD™ or SNAPPOST™ item to order.");
-        return;
-      }
-
-      const name = document.getElementById('fullName').value;
-      const email = document.getElementById('email').value;
-      const street = document.getElementById('streetAddress').value;
-      const city = document.getElementById('city').value;
-      const state = document.getElementById('state').value;
-      const zip = document.getElementById('zipCode').value;
-      const payment = document.getElementById('paymentMethod').value;
-      const notes = document.getElementById('notes').value;
-
-      // Icons selected list
-      let icons = [];
-      if (postQty > 0) {
-        if (document.getElementById('iconFlag').checked) icons.push("American Flag (+$7.99)");
-        if (document.getElementById('iconSolar').checked) icons.push("TIKI Solar Light (+$13.99)");
-        if (document.getElementById('iconFinial').checked) icons.push("Decorative Finial (+$6.99)");
-      }
-
-      const subtotal = document.getElementById('summarySubtotal').innerText;
-      const shipping = document.getElementById('summaryShipping').innerText;
-      const tax = document.getElementById('summaryTax').innerText;
-      const total = document.getElementById('summaryTotal').innerText;
-
-      const subject = encodeURIComponent(`Practical Plastic Order Request - ${name}`);
-      const body = encodeURIComponent(
-        `ORDER REQUEST DETAILS\n` +
-        `----------------------------------------\n` +
-        `Name: ${name}\n` +
-        `Email: ${email}\n` +
-        `Shipping Address: ${street}, ${city}, ${state} ${zip}\n` +
-        `Payment Method: ${payment}\n\n` +
-        `ITEMS ORDERED:\n` +
-        `- SNAPSHIELD™ Qty: ${snapQty} ($${(snapQty * SNAPSHIELD_PRICE).toFixed(2)})\n` +
-        `- SNAPPOST™ Base Qty: ${postQty} ($${(postQty * SNAPPOST_PRICE).toFixed(2)})\n` +
-        `  Icons Selected: ${icons.length > 0 ? icons.join(', ') : 'None'}\n\n` +
-        `ORDER BREAKDOWN:\n` +
-        `Subtotal: ${subtotal}\n` +
-        `Shipping: ${shipping}\n` +
-        `Estimated Tax (8.625%): ${tax}\n` +
-        `TOTAL DUE: ${total}\n\n` +
-        `Notes/Special Instructions:\n${notes || 'None'}`
-      );
-
-      // Trigger user mail client
-      window.location.href = `mailto:practicalplastic3d@gmail.com?subject=${subject}&body=${body}`;
-
-      // Display Confirmation Box
-      document.getElementById('checkoutForm').classList.add('hidden');
-      document.getElementById('confirmState').classList.remove('hidden');
+      alert('Thank you for your order! This is a demo checkout page.');
     }
-
-    function resetOrderForm() {
-      document.getElementById('checkoutForm').reset();
-      document.getElementById('checkoutForm').classList.remove('hidden');
-      document.getElementById('confirmState').classList.add('hidden');
-      calculateTotals();
-    }
-
-    // Handle browser back/forward buttons with hash change
-    window.addEventListener('hashchange', () => {
-      const hash = window.location.hash.replace('#', '');
-      if (hash) {
-        navigateTo(hash);
-      } else {
-        navigateTo('home');
-      }
-    });
-
-    // Initialize initial page load state
-    window.addEventListener('DOMContentLoaded', () => {
-      closeModal();
-
-      const modal = document.getElementById('imageModal');
-      if (modal) {
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          closeModal();
-        }
-      });
-
-      const hash = window.location.hash.replace('#', '');
-      if (hash) {
-        navigateTo(hash);
-      } else {
-        navigateTo('home');
-      }
-      calculateTotals();
-    });
   </script>
 
 </body>
