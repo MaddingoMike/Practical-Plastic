@@ -3,84 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Practical Plastic — Coming Soon</title>
+  <title>Practical Plastic — Clever Ideas. Practically Printed.</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
+    :root {
+      --bg-dark: #0b0f17;
+      --card-bg: rgba(22, 27, 34, 0.75);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-red: #dc2626;
+      --accent-red-hover: #b91c1c;
+      --accent-blue: #38bdf8;
+      --success-green: #22c55e;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #0d1117;
-      color: #c9d1d9;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(220, 38, 38, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.1) 0px, transparent 50%);
+      color: var(--text-main);
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 20px;
+      padding: 24px;
+      line-height: 1.5;
     }
-    .card {
-      background-color: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      padding: 40px;
-      max-width: 500px;
+
+    .container {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 48px 36px;
+      max-width: 540px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     }
-    h1 {
-      font-size: 2rem;
-      color: #58a6ff;
-      margin-bottom: 10px;
-    }
-    p.tagline {
-      font-size: 1.1rem;
-      color: #8b949e;
-      margin-bottom: 25px;
-      font-weight: 500;
-    }
-    .badge {
-      display: inline-block;
-      background-color: #238636;
-      color: #ffffff;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 20px;
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: var(--success-green);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
     }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--success-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--success-green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    p.tagline {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 20px;
+    }
+
     p.description {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #c9d1d9;
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      font-weight: 400;
     }
+
+    /* Newsletter Form */
+    .notify-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 480px) {
+      .notify-form {
+        flex-direction: row;
+      }
+    }
+
+    .notify-form input[type="email"] {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: rgba(15, 23, 42, 0.6);
+      color: #ffffff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .notify-form input[type="email"]:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .notify-form button {
+      padding: 14px 24px;
+      border-radius: 10px;
+      border: none;
+      background-color: var(--accent-red);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+
+    .notify-form button:hover {
+      background-color: var(--accent-red-hover);
+    }
+
+    .notify-form button:active {
+      transform: scale(0.98);
+    }
+
+    /* Social Links */
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .social-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .social-icon:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
     footer {
-      margin-top: 30px;
       font-size: 0.8rem;
-      color: #484f58;
+      color: var(--text-muted);
+      border-top: 1px solid var(--card-border);
+      padding-top: 20px;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
+  <main class="container">
+    <div class="status-badge">
+      <span class="pulse-dot"></span>
+      <span>Website Launching Soon</span>
+    </div>
+
     <h1>Practical Plastic</h1>
     <p class="tagline">3D Designed ★ 3D Printed ★ Original Products</p>
-    
-    <div class="badge">Under Construction</div>
-    
+
     <p class="description">
-      We're currently building our new website to showcase our line of custom 3D printed products and solutions. Check back soon for updates!
+      We are crafting practical, high-quality 3D printed solutions and unique original products. Enter your email below to get notified as soon as we go live!
     </p>
-    
+
+    <!-- Email Notification Form -->
+    <form class="notify-form" onsubmit="event.preventDefault(); alert('Thank you! We will notify you at launch.');">
+      <input type="email" placeholder="Enter your email address..." required>
+      <button type="submit">Notify Me</button>
+    </form>
+
+    <!-- Social Media Links -->
+    <div class="social-links">
+      <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="social-icon" aria-label="Etsy Shop"><i class="fa-brands fa-etsy"></i></a>
+      <a href="#" class="social-icon" aria-label="Contact Email"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+
     <footer>
       &copy; Practical Plastic. All rights reserved.
     </footer>
-  </div>
+  </main>
 
 </body>
 </html>
