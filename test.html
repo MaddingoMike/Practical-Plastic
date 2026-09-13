@@ -1,162 +1,788 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Showcase</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Plastic - Clever Ideas. Practically Printed.</title>
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-100 p-4 md:p-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #b91c1c;
+      --accent-hover: #991b1b;
+      --navy: #0f172a;
+      --border: #e2e8f0;
+    }
 
-  <div class="max-w-5xl mx-auto">
-    
-    <!-- SNAPPOST SECTION -->
-    <div id="snappost-section" class="bg-white p-6 rounded-lg shadow-md mb-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-        
-        <!-- Image Gallery Side -->
-        <div class="flex flex-col items-center">
-          <!-- Main Featured Image -->
-          <div class="w-full h-80 bg-slate-200 rounded-lg overflow-hidden border border-slate-300 mb-4 flex items-center justify-center p-2">
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .img-contain {
+      object-fit: contain;
+      background-color: #f1f5f9;
+    }
+
+    .view-page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+    }
+
+    .view-page.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .nav-btn.active {
+      background-color: #b91c1c;
+      color: #ffffff;
+      border-color: #b91c1c;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      padding: 5px 15px;
+      transition: color 0.2s;
+    }
+
+    .close-btn:hover {
+      color: #bbb;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-4 md:p-8 bg-slate-50 text-slate-900">
+
+  <header class="text-center max-w-5xl mx-auto w-full mb-8">
+    <a href="#home" onclick="navigateTo('home')" class="inline-block group">
+      <h1 class="text-3xl md:text-5xl font-black tracking-wider text-slate-900 uppercase mb-1 group-hover:text-red-700 transition-colors">
+        Practical Plastic
+      </h1>
+    </a>
+    <p class="text-xs md:text-sm font-bold text-slate-600 uppercase tracking-widest mb-3">
+      3D Designed ★ 3D Printed ★ Original Products
+    </p>
+    <div class="inline-block bg-slate-900 text-white font-extrabold italic px-5 py-2 rounded-lg shadow-md text-sm md:text-base tracking-wide mb-6">
+      CLEVER IDEAS. PRACTICALLY PRINTED.
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="flex flex-wrap justify-center items-center gap-2 md:gap-4 border-b border-slate-200 pb-4">
+      <button id="nav-home" onclick="navigateTo('home')" class="nav-btn active px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+        All Products
+      </button>
+      <button id="nav-snapshield" onclick="navigateTo('snapshield')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+        SNAPSHIELD™
+      </button>
+      <button id="nav-snappost" onclick="navigateTo('snappost')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+        SNAPPOST™
+      </button>
+      <button id="nav-order" onclick="navigateTo('order')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm bg-red-700 text-white hover:bg-red-800 transition-all shadow-sm">
+        Order / Checkout
+      </button>
+    </nav>
+  </header>
+
+  <main id="home" class="view-page active max-w-5xl mx-auto w-full mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- SNAPSHIELD Card -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
             <img 
-              id="snappost-main-img" 
-              src="snappost/flag_8.jpg" 
-              alt="SNAPPOST Featured View" 
-              class="h-full w-full object-contain object-top"
+              src="snapshield/product and packaging 2.jpg" 
+              alt="SNAPSHIELD Magnetic Paint Protection"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=SNAPSHIELD+Product+Image';"
+              class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onclick="openModal(this.src)"
             />
           </div>
+          <div class="p-6">
+            <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPSHIELD™</h2>
+            <div class="text-xs font-bold text-red-700 uppercase tracking-wider mb-4">Magnetic Paint Protection</div>
+            <ul class="space-y-2 mb-6 text-slate-600 text-sm">
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Protects switches & receptacles from paint overspray.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Installs in a Snap with powerful magnets!</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> No need for messy tape.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 pt-0 space-y-2">
+          <a href="#snapshield" onclick="navigateTo('snapshield')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+            View Details
+          </a>
+          <button onclick="navigateToOrder('SNAPSHIELD')" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
+            Order Now
+          </button>
+        </div>
+      </div>
 
-          <!-- Image Gallery Thumbnails (6 Columns) -->
-          <div class="grid grid-cols-6 gap-2 w-full">
+      <!-- SNAPPOST Card -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
+            <img 
+              src="snappost/flag 01.png" 
+              alt="SNAPPOST Interchangeable Fence Post Caps"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=SNAPPOST+Product+Image';"
+              class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onclick="openModal(this.src)"
+            />
+          </div>
+          <div class="p-6">
+            <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPPOST™</h2>
+            <div class="text-xs font-bold text-red-700 uppercase tracking-wider mb-4">Interchangeable Fence Post Caps</div>
+            <ul class="space-y-2 mb-6 text-slate-600 text-sm">
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Snap in a flag or decorative Topper.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Snap in a blank plug when not in use.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Strong. Secure. Weatherproof. Simple.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 pt-0 space-y-2">
+          <a href="#snappost" onclick="navigateTo('snappost')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+            View Details
+          </a>
+          <button onclick="navigateToOrder('SNAPPOST')" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
+            Order Now
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <section id="snapshield" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors">
+      ← Back to Catalog
+    </button>
+    
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Gallery / Image Box -->
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <img 
+            src="snapshield/product and packaging 2.jpg" 
+            alt="SNAPSHIELD Magnetic Paint Protection Detail"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=SNAPSHIELD+Detail+Image';"
+            class="w-full h-80 img-contain rounded-lg shadow-sm cursor-pointer"
+            onclick="openModal(this.src)"
+          />
+          <p class="text-xs text-slate-500 mt-3 italic text-center">Magnetic shield designed for standard Decora style light switches & most receptacles.</p>
+        </div>
+
+        <!-- Detail Content -->
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Original Product</span>
+          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPSHIELD™</h2>
+          <h3 class="text-lg font-bold text-red-700 mb-4">Magnetic Paint Protection</h3>
+          
+          <div class="border-t border-b border-slate-200 py-3 mb-6 flex justify-between items-center text-sm">
+            <div>
+              <span class="text-slate-500">Price:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$8.99 / ea</span>
+            </div>
+            <div>
+              <span class="text-slate-500">Origin:</span>
+              <span class="text-slate-900 font-semibold ml-1">USA Made</span>
+            </div>
+          </div>
+
+          <h4 class="font-bold text-slate-900 text-base mb-3">Key Features & Highlights:</h4>
+          <ul class="space-y-3 text-slate-700 text-sm mb-6">
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Protects Switches & Receptacles:</strong> Prevents mess from paint overspray, roller splatter, and brush slips.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Installs in a Snap:</strong> High-strength embedded magnets instantly snap over existing wall plates without tools.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>No Need for Messy Tape:</strong> Tape is a one time use. Snapshield is reusable.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Durable & Reusable:</strong> 3D printed with PETG filament for repeated contractor or DIY painter use.</span>
+            </li>
+          </ul>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+            <h5 class="text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">Technical Specifications</h5>
+            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700">
+              <div><strong>Material:</strong> High Quality PETG Filament</div>
+              <div><strong>Magnet Type:</strong> Neodymium N52 Rare-Earth</div>
+              <div><strong>Compatibility:</strong> Standard Decora Style Switches & Receptacles</div>
+              <div><strong>Manufacturing Process:</strong> 3D FDM printing</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button onclick="navigateToOrder('SNAPSHIELD')" class="flex-1 bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors text-center">
+              Order SNAPSHIELD →
+            </button>
+            <button onclick="navigateTo('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-xl transition-colors text-center">
+              Back to Catalog
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="snappost" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors">
+      ← Back to Catalog
+    </button>
+    
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Gallery / Image Box -->
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <!-- Main Display Image -->
+          <img 
+            id="snappost-main-img"
+            src="snappost/flag_8.jpg" 
+            alt="SNAPPOST Fence Post Cap Detail"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=SNAPPOST+Detail+Image';"
+            class="w-full h-80 img-contain rounded-lg shadow-sm mb-3 cursor-pointer"
+            onclick="openModal(this.src)"
+          />
+          
+          <!-- Image Gallery Thumbnails -->
+          <div class="grid grid-cols-5 gap-2 w-full">
             <img 
               src="snappost/flag_8.jpg" 
               alt="SNAPPOST Flag Cap"
-              onclick="swapSnappostImage(this.src)"
+              onclick="swapMainImage(this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
             />
             <img 
               src="snappost/finial_1.jpg" 
               alt="SNAPPOST Finial Cap"
-              onclick="swapSnappostImage(this.src)"
-              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
-            />
-            <img 
-              src="snappost/tiki_2.jpg" 
-              alt="SNAPPOST Tiki Cap"
-              onclick="swapSnappostImage(this.src)"
+              onclick="swapMainImage(this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
             />
             <img 
               src="snappost/flag 2.jpg" 
               alt="SNAPPOST Flag 2 Cap"
-              onclick="swapSnappostImage(this.src)"
+              onclick="swapMainImage(this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
             />
             <img 
               src="snappost/snappost_base_2.jpg" 
               alt="SNAPPOST Base View 2"
-              onclick="swapSnappostImage(this.src)"
+              onclick="swapMainImage(this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
             />
             <img 
               src="snappost/snappost_base_1.jpg" 
               alt="SNAPPOST Base View 1"
-              onclick="swapSnappostImage(this.src)"
+              onclick="swapMainImage(this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
             />
           </div>
+
+          <p class="text-xs text-slate-500 mt-3 italic text-center">Click thumbnails to swap view. Click main image to enlarge.</p>
         </div>
 
-        <!-- Product Details Side -->
-        <div class="flex flex-col h-full justify-between">
-          <div>
-            <h2 class="text-2xl font-bold text-slate-800 mb-2">SNAPPOST™</h2>
-            <p class="text-slate-600 mb-4">
-              Decorative post caps and mounting systems built for durability and easy installation.
-            </p>
+        <!-- Detail Content -->
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Original Product</span>
+          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPPOST™</h2>
+          <h3 class="text-lg font-bold text-red-700 mb-4">Interchangeable Fence Post Caps</h3>
+          <h3 class="text-lg font-bold text-slate-700 mb-4">One Base, Swap The Top!</h3>
+          <div class="border-t border-b border-slate-200 py-3 mb-6 text-sm">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-slate-500">Base Price for cap with blank plug:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$12.99 / ea</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">American Flag:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$7.99 / ea</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">TIKI with solar light:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$13.99 / ea</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">Pumpkin with solar light:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$14.99 / ea</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">Decorative finial:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$6.99 / ea</span>
+            </div>
+            <div class="flex justify-between items-center mt-2 pt-2 border-t border-slate-100">
+              <span class="text-slate-500">Origin:</span>
+              <span class="text-slate-900 font-semibold ml-1">USA Made</span>
+            </div>
           </div>
 
-          <div class="mt-4 pt-4 border-t border-slate-200">
-            <a href="snappost.html" class="block w-full text-center bg-red-700 hover:bg-red-800 text-white font-semibold py-3 px-6 rounded-md shadow transition-colors">
-              View SNAPPOST™ Options
-            </a>
+          <h4 class="font-bold text-slate-900 text-base mb-3">Key Features & Highlights:</h4>
+          <ul class="space-y-3 text-slate-700 text-sm mb-6">
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Snap in a Flag or Topper:</strong> Effortlessly swap toppers and flags. NEW TOPPERS COMING SOON - CHECK BACK OFTEN!</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Flush Blank Plug Included:</strong> Insert a flush blank plug to close off the cap completely when nothing is attached.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Strong. Secure. Simple:</strong> Precision MAGNETIC snap locking mechanism ensures toppers resist wind and extreme weather.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Weather Resistant Construction:</strong> Made with PETG plastic.</span>
+            </li>
+          </ul>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+            <h5 class="text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">Technical Specifications</h5>
+            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700">
+              <div><strong>Material:</strong> PETG plastic 3D filament</div>
+              <div><strong>Post Sizing:</strong> Standard Vinyl 5"x5" Posts</div>
+              <div><strong>Mounting:</strong> MAGNETIC Snap-fit modular receiver</div>
+              <div><strong>Manufacturing Process:</strong> 3D FDM printing</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button onclick="navigateToOrder('SNAPPOST')" class="flex-1 bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors text-center">
+              Order SNAPPOST →
+            </button>
+            <button onclick="navigateTo('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-xl transition-colors text-center">
+              Back to Catalog
+            </button>
           </div>
         </div>
-
       </div>
     </div>
+  </section>
 
+  <section id="order" class="view-page max-w-4xl mx-auto w-full mb-12">
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10">
+      <div class="border-b border-slate-200 pb-4 mb-6">
+        <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase">Practical Plastic Checkout</h2>
+        <p class="text-slate-600 text-sm mt-1">Configure your product quantities, toppers, and review your order calculation.</p>
+      </div>
 
-    <!-- SNAPSHIELD SECTION -->
-    <div id="snapshield-section" class="bg-white p-6 rounded-lg shadow-md mb-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <form id="checkoutForm" onsubmit="handleFormSubmit(event)" class="space-y-8">
         
-        <!-- Image Gallery Side -->
-        <div class="flex flex-col items-center">
-          <!-- Main Featured Image -->
-          <div class="w-full h-80 bg-slate-200 rounded-lg overflow-hidden border border-slate-300 mb-4 flex items-center justify-center p-2">
-            <img 
-              id="snapshield-main-img" 
-              src="snapshield/snapshield_product_front.jpg" 
-              alt="SNAPSHIELD Featured View" 
-              class="h-full w-full object-contain object-top"
-            />
+        <!-- SECTION 1: Customer Information -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 flex items-center">
+            <span class="bg-slate-900 text-white text-xs rounded-full w-6 h-6 inline-flex items-center justify-center mr-2">1</span>
+            Customer & Shipping Information
+          </h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="fullName">Full Name *</label>
+              <input 
+                type="text" 
+                id="fullName" 
+                required
+                placeholder="e.g. John Doe" 
+                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-700 text-slate-900 text-sm"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="email">Email Address *</label>
+              <input 
+                type="email" 
+                id="email" 
+                required
+                placeholder="e.g. john@example.com" 
+                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-700 text-slate-900 text-sm"
+              />
+            </div>
           </div>
 
-          <!-- Image Gallery Thumbnails (3 Columns) -->
-          <div class="grid grid-cols-3 gap-2 w-full">
-            <img 
-              src="snapshield/snapshield_product_front.jpg" 
-              alt="SNAPSHIELD Front View"
-              onclick="swapSnapshieldImage(this.src)"
-              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
-            />
-            <img 
-              src="snapshield/snapshield_product_back.jpg" 
-              alt="SNAPSHIELD Back View"
-              onclick="swapSnapshieldImage(this.src)"
-              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
-            />
-            <img 
-              src="snapshield/receptacle_1.jpg" 
-              alt="SNAPSHIELD Receptacle View"
-              onclick="swapSnapshieldImage(this.src)"
-              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
-            />
-          </div>
-        </div>
-
-        <!-- Product Details Side -->
-        <div class="flex flex-col h-full justify-between">
           <div>
-            <h2 class="text-2xl font-bold text-slate-800 mb-2">SNAPSHIELD™</h2>
-            <p class="text-slate-600 mb-4">
-              Protective outlet and switch guard designed for seamless installation and maximum durability.
-            </p>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="streetAddress">Street Address *</label>
+            <input 
+              type="text" 
+              id="streetAddress" 
+              required
+              placeholder="e.g. 123 Main Street, Apt 4B" 
+              class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-700 text-slate-900 text-sm"
+            />
           </div>
 
-          <div class="mt-4 pt-4 border-t border-slate-200">
-            <a href="snapshield.html" class="block w-full text-center bg-red-700 hover:bg-red-800 text-white font-semibold py-3 px-6 rounded-md shadow transition-colors">
-              View SNAPSHIELD™ Options
-            </a>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="city">City *</label>
+              <input 
+                type="text" 
+                id="city" 
+                required
+                placeholder="City" 
+                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-700 text-slate-900 text-sm"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="state">State *</label>
+              <input 
+                type="text" 
+                id="state" 
+                required
+                placeholder="State (e.g. NY)" 
+                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-700 text-slate-900 text-sm"
+              />
+            </div>
+            <div class="col-span-2 md:col-span-1">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="zipCode">ZIP Code *</label>
+              <input 
+                type="text" 
+                id="zipCode" 
+                required
+                placeholder="10001" 
+                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-700 text-slate-900 text-sm"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="paymentMethod">Payment Method *</label>
+            <select 
+              id="paymentMethod" 
+              required
+              class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-700 text-slate-900 text-sm bg-white"
+            >
+              <option value="Credit / Debit Card">Credit Card / Debit Card</option>
+              <option value="PayPal">PayPal</option>
+              <option value="Venmo">Venmo</option>
+              <option value="Check / Money Order">Check / Money Order</option>
+            </select>
           </div>
         </div>
 
-      </div>
-    </div>
+        <!-- SECTION 2: SNAPSHIELD Configuration -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 flex items-center justify-between">
+            <span class="flex items-center">
+              <span class="bg-slate-900 text-white text-xs rounded-full w-6 h-6 inline-flex items-center justify-center mr-2">2</span>
+              SNAPSHIELD™ (Magnetic Paint Protection)
+            </span>
+            <span class="text-sm font-extrabold text-red-700">$8.99 / ea</span>
+          </h3>
 
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <input 
+                type="checkbox" 
+                id="snapshieldEnable" 
+                onchange="toggleProduct('snapshield')"
+                class="w-5 h-5 text-red-700 rounded border-slate-300 focus:ring-red-700 accent-red-700 cursor-pointer"
+              />
+              <div>
+                <label for="snapshieldEnable" class="font-bold text-slate-900 text-sm cursor-pointer">Include SNAPSHIELD™</label>
+                <p class="text-xs text-slate-500">Magnetic receptacle & light switch painter shield</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <label class="text-xs font-bold text-slate-700 uppercase" for="snapshieldQty">Qty:</label>
+              <input 
+                type="number" 
+                id="snapshieldQty" 
+                value="0" 
+                min="0" 
+                oninput="calculateTotals()"
+                class="w-20 px-3 py-1.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-700 text-slate-900 text-sm font-bold text-center"
+              />
+              <span class="text-sm font-bold text-slate-700 min-w-[70px] text-right" id="snapshieldLineTotal">$0.00</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: SNAPPOST Configuration -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2 flex items-center justify-between">
+            <span class="flex items-center">
+              <span class="bg-slate-900 text-white text-xs rounded-full w-6 h-6 inline-flex items-center justify-center mr-2">3</span>
+              SNAPPOST™ (Fence Post Caps)
+            </span>
+            <span class="text-sm font-extrabold text-red-700">$12.99 / ea</span>
+          </h3>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-3">
+              <div class="flex items-center gap-3">
+                <input 
+                  type="checkbox" 
+                  id="snappostEnable" 
+                  onchange="toggleProduct('snappost')"
+                  class="w-5 h-5 text-red-700 rounded border-slate-300 focus:ring-red-700 accent-red-700 cursor-pointer"
+                />
+                <div>
+                  <label for="snappostEnable" class="font-bold text-slate-900 text-sm cursor-pointer">Include SNAPPOST™ Base</label>
+                  <p class="text-xs text-slate-500">Includes weatherproof post cap & flush blank plug</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <label class="text-xs font-bold text-slate-700 uppercase" for="snappostQty">Base Qty:</label>
+                <input 
+                  type="number" 
+                  id="snappostQty" 
+                  value="0" 
+                  min="0" 
+                  oninput="calculateTotals()"
+                  class="w-20 px-3 py-1.5 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-red-700 text-slate-900 text-sm font-bold text-center"
+                />
+                <span class="text-sm font-bold text-slate-700 min-w-[70px] text-right" id="snappostLineTotal">$0.00</span>
+              </div>
+            </div>
+
+            <!-- SNAPPOST Topper Selection -->
+            <div>
+              <p class="text-xs font-extrabold text-slate-700 uppercase tracking-wider mb-2">Select Optional Snap-In Toppers:</p>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                
+                <label class="flex items-start p-3 bg-white border border-slate-200 rounded-lg cursor-pointer hover:border-red-500 transition-colors">
+                  <input 
+                    type="checkbox" 
+                    id="iconFlag" 
+                    value="7.99" 
+                    onchange="calculateTotals()"
+                    class="mt-0.5 w-4 h-4 text-red-700 rounded border-slate-300 accent-red-700"
+                  />
+                  <div class="ml-2">
+                    <span class="block text-xs font-bold text-slate-900">🇺🇸 American Flag</span>
+                    <span class="block text-[11px] text-red-700 font-semibold">+$7.99 / ea</span>
+                  </div>
+                </label>
+
+                <label class="flex items-start p-3 bg-white border border-slate-200 rounded-lg cursor-pointer hover:border-red-500 transition-colors">
+                  <input 
+                    type="checkbox" 
+                    id="iconSolar" 
+                    value="13.99" 
+                    onchange="calculateTotals()"
+                    class="mt-0.5 w-4 h-4 text-red-700 rounded border-slate-300 accent-red-700"
+                  />
+                  <div class="ml-2">
+                    <span class="block text-xs font-bold text-slate-900">🗿 TIKI Solar Light</span>
+                    <span class="block text-[11px] text-red-700 font-semibold">+$13.99 / ea</span>
+                  </div>
+                </label>
+
+                <label class="flex items-start p-3 bg-white border border-slate-200 rounded-lg cursor-pointer hover:border-red-500 transition-colors">
+                  <input 
+                    type="checkbox" 
+                    id="iconFinial" 
+                    value="6.99" 
+                    onchange="calculateTotals()"
+                    class="mt-0.5 w-4 h-4 text-red-700 rounded border-slate-300 accent-red-700"
+                  />
+                  <div class="ml-2">
+                    <span class="block text-xs font-bold text-slate-900">⚜ Decorative Finial</span>
+                    <span class="block text-[11px] text-red-700 font-semibold">+$6.99 / ea</span>
+                  </div>
+                </label>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: Summary & Submission -->
+        <div class="bg-slate-900 text-white p-6 rounded-xl space-y-4 shadow-inner">
+          <h3 class="text-lg font-bold border-b border-slate-800 pb-2">Order Summary</h3>
+          
+          <div class="space-y-2 text-sm text-slate-300">
+            <div class="flex justify-between">
+              <span>Subtotal:</span>
+              <span id="summarySubtotal" class="font-bold text-white">$0.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Estimated Shipping:</span>
+              <span id="summaryShipping" class="font-bold text-white">$5.00</span>
+            </div>
+            <div class="flex justify-between border-t border-slate-800 pt-2 text-lg font-black text-white">
+              <span>Total Estimated Cost:</span>
+              <span id="summaryTotal" class="text-red-400">$5.00</span>
+            </div>
+          </div>
+
+          <button 
+            type="submit" 
+            class="w-full bg-red-700 hover:bg-red-800 text-white font-extrabold py-3.5 px-6 rounded-lg text-center tracking-wide uppercase shadow-lg transition-colors"
+          >
+            Submit Order Request
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-center text-xs text-slate-500 py-6 border-t border-slate-200 max-w-5xl mx-auto w-full">
+    <p>© Practical Plastic. Clever Ideas. Practically Printed. All rights reserved.</p>
+  </footer>
+
+  <!-- Modal View -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <img class="modal-content" id="modalImg" alt="Enlarged View">
   </div>
 
-  <!-- Isolated Gallery JavaScript Functions -->
   <script>
-    function swapSnappostImage(src) {
+    function navigateTo(pageId) {
+      document.querySelectorAll('.view-page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      const selectedPage = document.getElementById(pageId);
+      if (selectedPage) {
+        selectedPage.classList.add('active');
+      }
+
+      const activeNav = document.getElementById(`nav-${pageId}`);
+      if (activeNav) {
+        activeNav.classList.add('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function navigateToOrder(product) {
+      navigateTo('order');
+      if (product === 'SNAPSHIELD') {
+        const checkbox = document.getElementById('snapshieldEnable');
+        checkbox.checked = true;
+        toggleProduct('snapshield');
+        if (parseInt(document.getElementById('snapshieldQty').value) === 0) {
+          document.getElementById('snapshieldQty').value = 1;
+        }
+      } else if (product === 'SNAPPOST') {
+        const checkbox = document.getElementById('snappostEnable');
+        checkbox.checked = true;
+        toggleProduct('snappost');
+        if (parseInt(document.getElementById('snappostQty').value) === 0) {
+          document.getElementById('snappostQty').value = 1;
+        }
+      }
+      calculateTotals();
+    }
+
+    function swapMainImage(src) {
       document.getElementById('snappost-main-img').src = src;
     }
 
-    function swapSnapshieldImage(src) {
-      document.getElementById('snapshield-main-img').src = src;
+    function toggleProduct(prod) {
+      if (prod === 'snapshield') {
+        const enabled = document.getElementById('snapshieldEnable').checked;
+        const qtyInput = document.getElementById('snapshieldQty');
+        if (enabled && parseInt(qtyInput.value) === 0) {
+          qtyInput.value = 1;
+        } else if (!enabled) {
+          qtyInput.value = 0;
+        }
+      } else if (prod === 'snappost') {
+        const enabled = document.getElementById('snappostEnable').checked;
+        const qtyInput = document.getElementById('snappostQty');
+        if (enabled && parseInt(qtyInput.value) === 0) {
+          qtyInput.value = 1;
+        } else if (!enabled) {
+          qtyInput.value = 0;
+        }
+      }
+      calculateTotals();
+    }
+
+    function calculateTotals() {
+      const snapshieldQty = parseInt(document.getElementById('snapshieldQty').value) || 0;
+      const snappostQty = parseInt(document.getElementById('snappostQty').value) || 0;
+
+      document.getElementById('snapshieldEnable').checked = snapshieldQty > 0;
+      document.getElementById('snappostEnable').checked = snappostQty > 0;
+
+      const snapshieldTotal = snapshieldQty * 8.99;
+      const snappostBaseTotal = snappostQty * 12.99;
+
+      let toppersCost = 0;
+      if (document.getElementById('iconFlag').checked) toppersCost += parseFloat(document.getElementById('iconFlag').value);
+      if (document.getElementById('iconSolar').checked) toppersCost += parseFloat(document.getElementById('iconSolar').value);
+      if (document.getElementById('iconFinial').checked) toppersCost += parseFloat(document.getElementById('iconFinial').value);
+
+      const snappostTotal = snappostBaseTotal + (snappostQty > 0 ? toppersCost * snappostQty : 0);
+
+      document.getElementById('snapshieldLineTotal').innerText = `$${snapshieldTotal.toFixed(2)}`;
+      document.getElementById('snappostLineTotal').innerText = `$${snappostTotal.toFixed(2)}`;
+
+      const subtotal = snapshieldTotal + snappostTotal;
+      const shipping = subtotal > 0 ? 5.00 : 0.00;
+      const grandTotal = subtotal + shipping;
+
+      document.getElementById('summarySubtotal').innerText = `$${subtotal.toFixed(2)}`;
+      document.getElementById('summaryShipping').innerText = `$${shipping.toFixed(2)}`;
+      document.getElementById('summaryTotal').innerText = `$${grandTotal.toFixed(2)}`;
+    }
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('fullName').value;
+      alert(`Thank you, ${name}! Your order request has been submitted successfully.`);
+    }
+
+    function openModal(src) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      modal.style.display = 'flex';
+      modalImg.src = src;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
     }
   </script>
-
 </body>
 </html>
