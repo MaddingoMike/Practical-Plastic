@@ -1,57 +1,162 @@
-<!-- SNAPSHIELD SECTION -->
-<div id="snapshield-section" class="bg-white p-6 rounded-lg shadow-md mb-8">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-    
-    <!-- Image Gallery Side -->
-    <div class="flex flex-col items-center">
-      <!-- Main Featured Image -->
-      <div class="w-full h-80 bg-slate-200 rounded-lg overflow-hidden border border-slate-300 mb-4 flex items-center justify-center p-2">
-        <img 
-          id="snapshield-main-img" 
-          src="snapshield/snapshield_product_front.jpg" 
-          alt="SNAPSHIELD Featured View" 
-          class="h-full w-full object-contain object-top"
-        />
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 p-4 md:p-8">
 
-      <!-- Image Gallery Thumbnails -->
-      <div class="grid grid-cols-3 gap-2 w-full">
-        <img 
-          src="snapshield/snapshield_product_front.jpg" 
-          alt="SNAPSHIELD Front View"
-          onclick="document.getElementById('snapshield-main-img').src = this.src"
-          class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
-        />
-        <img 
-          src="snapshield/snapshield_product_back.jpg" 
-          alt="SNAPSHIELD Back View"
-          onclick="document.getElementById('snapshield-main-img').src = this.src"
-          class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
-        />
-        <img 
-          src="snapshield/receptacle_1.jpg" 
-          alt="SNAPSHIELD Receptacle View"
-          onclick="document.getElementById('snapshield-main-img').src = this.src"
-          class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
-        />
+  <div class="max-w-5xl mx-auto">
+    
+    <!-- SNAPPOST SECTION -->
+    <div id="snappost-section" class="bg-white p-6 rounded-lg shadow-md mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        
+        <!-- Image Gallery Side -->
+        <div class="flex flex-col items-center">
+          <!-- Main Featured Image -->
+          <div class="w-full h-80 bg-slate-200 rounded-lg overflow-hidden border border-slate-300 mb-4 flex items-center justify-center p-2">
+            <img 
+              id="snappost-main-img" 
+              src="snappost/flag_8.jpg" 
+              alt="SNAPPOST Featured View" 
+              class="h-full w-full object-contain object-top"
+            />
+          </div>
+
+          <!-- Image Gallery Thumbnails (6 Columns) -->
+          <div class="grid grid-cols-6 gap-2 w-full">
+            <img 
+              src="snappost/flag_8.jpg" 
+              alt="SNAPPOST Flag Cap"
+              onclick="swapSnappostImage(this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/finial_1.jpg" 
+              alt="SNAPPOST Finial Cap"
+              onclick="swapSnappostImage(this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/tiki_2.jpg" 
+              alt="SNAPPOST Tiki Cap"
+              onclick="swapSnappostImage(this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/flag 2.jpg" 
+              alt="SNAPPOST Flag 2 Cap"
+              onclick="swapSnappostImage(this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/snappost_base_2.jpg" 
+              alt="SNAPPOST Base View 2"
+              onclick="swapSnappostImage(this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/snappost_base_1.jpg" 
+              alt="SNAPPOST Base View 1"
+              onclick="swapSnappostImage(this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+          </div>
+        </div>
+
+        <!-- Product Details Side -->
+        <div class="flex flex-col h-full justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-2">SNAPPOST™</h2>
+            <p class="text-slate-600 mb-4">
+              Decorative post caps and mounting systems built for durability and easy installation.
+            </p>
+          </div>
+
+          <div class="mt-4 pt-4 border-t border-slate-200">
+            <a href="snappost.html" class="block w-full text-center bg-red-700 hover:bg-red-800 text-white font-semibold py-3 px-6 rounded-md shadow transition-colors">
+              View SNAPPOST™ Options
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- Product Details Side -->
-    <div class="flex flex-col h-full justify-between">
-      <div>
-        <h2 class="text-2xl font-bold text-slate-800 mb-2">SNAPSHIELD™</h2>
-        <p class="text-slate-600 mb-4">
-          Protective outlet and switch guard designed for seamless installation and maximum durability.
-        </p>
-      </div>
 
-      <div class="mt-4 pt-4 border-t border-slate-200">
-        <button class="w-full bg-red-700 hover:bg-red-800 text-white font-semibold py-3 px-6 rounded-md shadow transition-colors">
-          View SNAPSHIELD™ Options
-        </button>
+    <!-- SNAPSHIELD SECTION -->
+    <div id="snapshield-section" class="bg-white p-6 rounded-lg shadow-md mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        
+        <!-- Image Gallery Side -->
+        <div class="flex flex-col items-center">
+          <!-- Main Featured Image -->
+          <div class="w-full h-80 bg-slate-200 rounded-lg overflow-hidden border border-slate-300 mb-4 flex items-center justify-center p-2">
+            <img 
+              id="snapshield-main-img" 
+              src="snapshield/snapshield_product_front.jpg" 
+              alt="SNAPSHIELD Featured View" 
+              class="h-full w-full object-contain object-top"
+            />
+          </div>
+
+          <!-- Image Gallery Thumbnails (3 Columns) -->
+          <div class="grid grid-cols-3 gap-2 w-full">
+            <img 
+              src="snapshield/snapshield_product_front.jpg" 
+              alt="SNAPSHIELD Front View"
+              onclick="swapSnapshieldImage(this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snapshield/snapshield_product_back.jpg" 
+              alt="SNAPSHIELD Back View"
+              onclick="swapSnapshieldImage(this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snapshield/receptacle_1.jpg" 
+              alt="SNAPSHIELD Receptacle View"
+              onclick="swapSnapshieldImage(this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+          </div>
+        </div>
+
+        <!-- Product Details Side -->
+        <div class="flex flex-col h-full justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-800 mb-2">SNAPSHIELD™</h2>
+            <p class="text-slate-600 mb-4">
+              Protective outlet and switch guard designed for seamless installation and maximum durability.
+            </p>
+          </div>
+
+          <div class="mt-4 pt-4 border-t border-slate-200">
+            <a href="snapshield.html" class="block w-full text-center bg-red-700 hover:bg-red-800 text-white font-semibold py-3 px-6 rounded-md shadow transition-colors">
+              View SNAPSHIELD™ Options
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
 
   </div>
-</div>
+
+  <!-- Isolated Gallery JavaScript Functions -->
+  <script>
+    function swapSnappostImage(src) {
+      document.getElementById('snappost-main-img').src = src;
+    }
+
+    function swapSnapshieldImage(src) {
+      document.getElementById('snapshield-main-img').src = src;
+    }
+  </script>
+
+</body>
+</html>
