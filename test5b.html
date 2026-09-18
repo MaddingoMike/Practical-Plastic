@@ -95,11 +95,11 @@
 <body class="min-h-screen flex flex-col justify-between p-4 md:p-8 bg-slate-50 text-slate-900">
 
   <header class="text-center max-w-5xl mx-auto w-full mb-8">
-    <a href="#home" onclick="navigateTo('home')" class="inline-block group">
+    <button onclick="navigateTo('home')" class="inline-block group cursor-pointer bg-transparent border-none">
       <h1 class="text-3xl md:text-5xl font-black tracking-wider text-slate-900 uppercase mb-1 group-hover:text-red-700 transition-colors">
         Practical Plastic
       </h1>
-    </a>
+    </button>
     <p class="text-xs md:text-sm font-bold text-slate-600 uppercase tracking-widest mb-3">
       3D Designed ★ 3D Printed ★ Original Products
     </p>
@@ -109,16 +109,16 @@
 
     <!-- Navigation Bar -->
     <nav class="flex flex-wrap justify-center items-center gap-2 md:gap-4 border-b border-slate-200 pb-4">
-      <button id="nav-home" onclick="navigateTo('home')" class="nav-btn active px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+      <button id="nav-home" onclick="navigateTo('home')" class="nav-btn active px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
         All Products
       </button>
-      <button id="nav-snapshield" onclick="navigateTo('snapshield')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+      <button id="nav-snapshield" onclick="navigateTo('snapshield')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
         SNAPSHIELD™
       </button>
-      <button id="nav-snappost" onclick="navigateTo('snappost')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+      <button id="nav-snappost" onclick="navigateTo('snappost')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
         SNAPPOST™
       </button>
-      <button id="nav-order" onclick="navigateTo('order')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm bg-red-700 text-white hover:bg-red-800 transition-all shadow-sm">
+      <button id="nav-order" onclick="navigateTo('order')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm bg-red-700 text-white hover:bg-red-800 transition-all shadow-sm cursor-pointer">
         Order / Checkout
       </button>
     </nav>
@@ -150,10 +150,10 @@
           </div>
         </div>
         <div class="p-6 pt-0 space-y-2">
-          <a href="#snapshield" onclick="navigateTo('snapshield')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+          <button onclick="navigateTo('snapshield')" class="w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors cursor-pointer">
             View Details
-          </a>
-          <button onclick="navigateToOrder('SNAPSHIELD')" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
+          </button>
+          <button onclick="navigateToOrder('SNAPSHIELD')" class="w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm cursor-pointer">
             Order Now
           </button>
         </div>
@@ -182,10 +182,10 @@
           </div>
         </div>
         <div class="p-6 pt-0 space-y-2">
-          <a href="#snappost" onclick="navigateTo('snappost')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+          <button onclick="navigateTo('snappost')" class="w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors cursor-pointer">
             View Details
-          </a>
-          <button onclick="navigateToOrder('SNAPPOST')" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
+          </button>
+          <button onclick="navigateToOrder('SNAPPOST')" class="w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm cursor-pointer">
             Order Now
           </button>
         </div>
@@ -195,7 +195,7 @@
   </main>
 
   <section id="snapshield" class="view-page max-w-5xl mx-auto w-full mb-12">
-    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
       ← Back to Catalog
     </button>
     
@@ -286,10 +286,10 @@
           </div>
 
           <div class="flex flex-col sm:flex-row gap-3">
-            <button onclick="navigateToOrder('SNAPSHIELD')" class="flex-1 bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors text-center">
+            <button onclick="navigateToOrder('SNAPSHIELD')" class="flex-1 bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors text-center cursor-pointer">
               Order SNAPSHIELD →
             </button>
-            <button onclick="navigateTo('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-xl transition-colors text-center">
+            <button onclick="navigateTo('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-xl transition-colors text-center cursor-pointer">
               Back to Catalog
             </button>
           </div>
@@ -299,7 +299,7 @@
   </section>
 
   <section id="snappost" class="view-page max-w-5xl mx-auto w-full mb-12">
-    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
       ← Back to Catalog
     </button>
     
@@ -424,10 +424,10 @@
           </div>
 
           <div class="flex flex-col sm:flex-row gap-3">
-            <button onclick="navigateToOrder('SNAPPOST')" class="flex-1 bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors text-center">
+            <button onclick="navigateToOrder('SNAPPOST')" class="flex-1 bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors text-center cursor-pointer">
               Order SNAPPOST →
             </button>
-            <button onclick="navigateTo('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-xl transition-colors text-center">
+            <button onclick="navigateTo('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-xl transition-colors text-center cursor-pointer">
               Back to Catalog
             </button>
           </div>
@@ -688,7 +688,7 @@
 
           <button 
             type="submit" 
-            class="w-full bg-red-700 hover:bg-red-800 text-white font-black py-3.5 px-6 rounded-xl shadow-lg transition-colors text-center text-base uppercase tracking-wider">
+            class="w-full bg-red-700 hover:bg-red-800 text-white font-black py-3.5 px-6 rounded-xl shadow-lg transition-colors text-center text-base uppercase tracking-wider cursor-pointer">
             Complete Order
           </button>
         </div>
@@ -806,7 +806,6 @@
 
     function handleFormSubmit(e) {
       e.preventDefault();
-      // Redirects directly to your Square checkout link in a new tab
       window.open('https://square.link/u/gWOwnuB6', '_blank');
     }
   </script>
