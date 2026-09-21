@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Plastic - Clever Ideas. Practically Printed.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #b91c1c;
+      --accent-hover: #991b1b;
+      --navy: #0f172a;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .img-contain {
+      object-fit: contain;
+      background-color: #f1f5f9;
+    }
+
+    .view-page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+    }
+
+    .view-page.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .nav-btn.active {
+      background-color: #b91c1c;
+      color: #ffffff;
+      border-color: #b91c1c;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      padding: 5px 15px;
+      transition: color 0.2s;
+    }
+
+    .close-btn:hover {
+      color: #bbb;
+    }
+
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
+  </style>
+  <script src="https://cdn.counter.dev/script.js" data-id="e5058050-ca37-456a-b09a-e3cb49e2c3cc" data-utcoffset="-4"></script>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-4 md:p-8 bg-slate-50 text-slate-900">
+
+  <header class="text-center max-w-6xl mx-auto w-full mb-8">
+    <a href="#home" onclick="navigateTo('home')" class="inline-block group">
+      <h1 class="text-3xl md:text-5xl font-black tracking-wider text-slate-900 uppercase mb-1 group-hover:text-red-700 transition-colors">
+        Practical Plastic
+      </h1>
+    </a>
+    <p class="text-xs md:text-sm font-bold text-slate-600 uppercase tracking-widest mb-3 mt-2">
+      3D Designed ★ 3D Printed ★ Original Products
+    </p>
+    <div class="inline-block bg-slate-900 text-white font-extrabold italic px-5 py-2 rounded-lg shadow-md text-sm md:text-base tracking-wide mb-6">
+      CLEVER IDEAS. PRACTICALLY PRINTED.
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="flex flex-wrap justify-center items-center gap-2 md:gap-4 border-b border-slate-200 pb-4">
+      <button id="nav-home" onclick="navigateTo('home')" class="nav-btn active px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+        All Products
+      </button>
+      <button id="nav-snapshield" onclick="navigateTo('snapshield')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+        SNAPSHIELD™
+      </button>
+      <button id="nav-snappost" onclick="navigateTo('snappost')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+        SNAPPOST™
+      </button>
+      <button id="nav-lithophane" onclick="navigateTo('lithophane')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+        CUSTOM LITHOPHANES
+      </button>
+      <a href="https://practical-plastic.square.site/s/shop" target="_blank" rel="noopener noreferrer" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm bg-red-700 text-white hover:bg-red-800 transition-all shadow-sm text-center">
+        Order / Checkout
+      </a>
+    </nav>
+  </header>
+
+  <main id="home" class="view-page active max-w-6xl mx-auto w-full mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- SNAPSHIELD Card -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
+            <img 
+              src="snapshield/product and packaging 2.jpg" 
+              alt="SNAPSHIELD Magnetic Paint Protection"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=SNAPSHIELD+Product+Image';"
+              class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onclick="openModal(this.src)"
+            />
+          </div>
+          <div class="p-6">
+            <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPSHIELD™</h2>
+            <div class="text-xs font-bold text-red-700 uppercase tracking-wider mb-4">Magnetic Paint Protection</div>
+            <ul class="space-y-2 mb-6 text-slate-600 text-sm">
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Protects switches & receptacles from paint overspray.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Installs in a Snap with powerful magnets!</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> No need for messy tape.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 pt-0 space-y-2">
+          <a href="#snapshield" onclick="navigateTo('snapshield')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+            View Details
+          </a>
+          <a href="https://practical-plastic.square.site/shop/snapshield/7FPAO3V2NW5SNBIMDLRDBDOV" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
+            Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- SNAPPOST Card -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
+            <img 
+              src="snappost/flag 01.png" 
+              alt="SNAPPOST Interchangeable Fence Post Caps"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=SNAPPOST+Product+Image';"
+              class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onclick="openModal(this.src)"
+            />
+          </div>
+          <div class="p-6">
+            <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPPOST™</h2>
+            <div class="text-xs font-bold text-red-700 uppercase tracking-wider mb-4">Interchangeable Fence Post Caps</div>
+            <ul class="space-y-2 mb-6 text-slate-600 text-sm">
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Snap in a flag or decorative Topper.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Snap in a blank plug when not in use.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Strong. Secure. Simple.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 pt-0 space-y-2">
+          <a href="#snappost" onclick="navigateTo('snappost')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+            View Details
+          </a>
+          <a href="https://practical-plastic.square.site/shop/snappost/DNPB7E5Q6GSXCVKZ7BM7QCSL" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
+            Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- LITHOPHANE Card -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
+            <img 
+              src="lithophane/cid lit 2.jpg" 
+              alt="Custom Backlit Lithophanes"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=Lithophane+Product+Image';"
+              class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onclick="openModal(this.src)"
+            />
+          </div>
+          <div class="p-6">
+            <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">CUSTOM LITHOPHANES</h2>
+            <div class="text-xs font-bold text-red-700 uppercase tracking-wider mb-4">Custom Backlit Lithophanes</div>
+            <ul class="space-y-2 mb-6 text-slate-600 text-sm">
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> 3D tactile physical relief appearance.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Breathtaking backlit glow illumination.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> The ultimate custom keepsake for memories.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 pt-0 space-y-2">
+          <a href="#lithophane" onclick="navigateTo('lithophane')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+            View Details & Order Form
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <section id="snapshield" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors">
+      ← Back to Catalog
+    </button>
+    
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Gallery / Image Box -->
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <!-- Main Display Image -->
+          <img 
+            id="snapshield-main-img"
+            src="snapshield/snapshield_product_front.jpg" 
+            alt="SNAPSHIELD Magnetic Paint Protection Detail"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=SNAPSHIELD+Detail+Image';"
+            class="w-full h-80 img-contain rounded-lg shadow-sm mb-3 cursor-pointer"
+            onclick="openModal(this.src)"
+          />
+          
+          <!-- Image Gallery Thumbnails -->
+          <div class="grid grid-cols-2 gap-2 w-full">
+            <img 
+              src="snapshield/snapshield_product_front.jpg" 
+              alt="SNAPSHIELD Product Front View"
+              onclick="swapMainImage('snapshield-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snapshield/receptacle_1.jpg" 
+              alt="SNAPSHIELD Receptacle View"
+              onclick="swapMainImage('snapshield-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snapshield/product and packaging 2.jpg" 
+              alt="SNAPSHIELD product View"
+              onclick="swapMainImage('snapshield-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+          </div>
+
+          <p class="text-xs text-slate-500 mt-3 italic text-center">Click thumbnails to swap view. Click main image to enlarge.</p>
+        </div>
+
+        <!-- Detail Content -->
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Original Product</span>
+          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPSHIELD™</h2>
+          <h3 class="text-lg font-bold text-red-700 mb-4">Magnetic Paint Protection</h3>
+          
+          <div class="border-t border-b border-slate-200 py-3 mb-6 flex justify-between items-center text-sm">
+            <div>
+              <span class="text-slate-500">Price:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$8.00 / ea</span>
+            </div>
+            <div>
+              <span class="text-slate-500">Origin:</span>
+              <span class="text-slate-900 font-semibold ml-1">USA Made</span>
+            </div>
+          </div>
+
+          <h4 class="font-bold text-slate-900 text-base mb-3">Key Features & Highlights:</h4>
+          <ul class="space-y-3 text-slate-700 text-sm mb-6">
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Protects Switches & Receptacles:</strong> Prevents mess from paint overspray, roller splatter, and brush slips.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Installs in a Snap:</strong> High-strength embedded magnets instantly snap over existing wall plates without tools.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>No Need for Messy Tape:</strong> Tape is a one time use. Snapshield is reusable.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Durable & Reusable:</strong> 3D printed with PETG filament for repeated contractor or DIY painter use.</span>
+            </li>
+          </ul>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+            <h5 class="text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">Technical Specifications</h5>
+            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700">
+              <div><strong>Material:</strong> High Quality PETG Filament</div>
+              <div><strong>Magnet Type:</strong> Neodymium N52 Rare-Earth</div>
+              <div><strong>Compatibility:</strong> Standard Decora Style Switches & Receptacles</div>
+              <div><strong>Manufacturing Process:</strong> 3D FDM printing</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://practical-plastic.square.site/shop/snapshield/7FPAO3V2NW5SNBIMDLRDBDOV" target="_blank" rel="noopener noreferrer" class="flex-1 bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors text-center">
+              Order SNAPSHIELD →
+            </a>
+            <button onclick="navigateTo('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-xl transition-colors text-center">
+              Back to Catalog
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="snappost" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors">
+      ← Back to Catalog
+    </button>
+    
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Gallery / Image Box -->
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <!-- Main Display Image -->
+          <img 
+            id="snappost-main-img"
+            src="snappost/flag_8.jpg" 
+            alt="SNAPPOST Fence Post Cap Detail"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=SNAPPOST+Detail+Image';"
+            class="w-full h-80 img-contain rounded-lg shadow-sm mb-3 cursor-pointer"
+            onclick="openModal(this.src)"
+          />
+          
+          <!-- Image Gallery Thumbnails -->
+          <div class="grid grid-cols-5 gap-2 w-full">
+            <img 
+              src="snappost/flag_8.jpg" 
+              alt="SNAPPOST Flag Cap"
+              onclick="swapMainImage('snappost-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/finial_1.jpg" 
+              alt="SNAPPOST Finial Cap"
+              onclick="swapMainImage('snappost-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/tiki_2.jpg" 
+              alt="SNAPPOST Tiki Cap"
+              onclick="swapMainImage('snappost-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/flag 2.jpg" 
+              alt="SNAPPOST Flag 2 Cap"
+              onclick="swapMainImage('snappost-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+             />
+            <img 
+              src="snappost/snappost_base_2.jpg" 
+              alt="SNAPPOST Base View 2"
+              onclick="swapMainImage('snappost-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+             />
+            <img 
+              src="snappost/snappost_base_1.jpg" 
+              alt="SNAPPOST Base View 1"
+              onclick="swapMainImage('snappost-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+             />
+            <img 
+              src="snappost/cat topper 2.jpg" 
+              alt="SNAPPOST Cat Topper"
+              onclick="swapMainImage('snappost-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/pumpkin3.jpg" 
+              alt="SNAPPOST Pumpkin Topper"
+              onclick="swapMainImage('snappost-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/tiki brown 2a.jpg" 
+              alt="SNAPPOST Tiki Brown Topper"
+              onclick="swapMainImage('snappost-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="snappost/tiki4.jpg" 
+              alt="SNAPPOST Tiki Lighted Topper"
+              onclick="swapMainImage('snappost-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+          </div>
+
+          <p class="text-xs text-slate-500 mt-3 italic text-center">Click thumbnails to swap view. Click main image to enlarge.</p>
+        </div>
+
+        <!-- Detail Content -->
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Original Product</span>
+          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPPOST™</h2>
+          <h3 class="text-lg font-bold text-red-700 mb-4">Interchangeable Fence Post Caps</h3>
+          <h3 class="text-lg font-bold text-slate-700 mb-4">One Base, Swap The Top!</h3>
+          <div class="border-t border-b border-slate-200 py-3 mb-6 text-sm">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-slate-500">Base Price for cap with blank plug:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$12.00 / ea</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">American Flag:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$7.00 / ea</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">TIKI with solar light:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$14.00 / ea</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">Pumpkin with solar light:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$16.00 / ea</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-500">Decorative finial:</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$8.00 / ea</span>
+            </div>
+            <div class="flex justify-between items-center mt-2 pt-2 border-t border-slate-100">
+              <span class="text-slate-500">Origin:</span>
+              <span class="text-slate-900 font-semibold ml-1">USA Made</span>
+            </div>
+          </div>
+
+          <h4 class="font-bold text-slate-900 text-base mb-3">Key Features & Highlights:</h4>
+          <ul class="space-y-3 text-slate-700 text-sm mb-6">
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Snap in a Flag or Topper:</strong> Effortlessly swap toppers and flags. NEW TOPPERS COMING SOON - CHECK BACK OFTEN!</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Flush Blank Plug Included:</strong> Insert a flush blank plug to close off the cap completely when nothing is attached.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Strong. Secure. Simple:</strong> Precision MAGNETIC snap locking mechanism ensures toppers resist wind and extreme weather.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Weather Resistant Construction:</strong> Made with PETG plastic.</span>
+            </li>
+          </ul>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+            <h5 class="text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">Technical Specifications</h5>
+            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700">
+              <div><strong>Material:</strong> PETG plastic 3D filament</div>
+              <div><strong>Post Sizing:</strong> Standard Vinyl 5"x5" Posts</div>
+              <div><strong>Mounting:</strong> MAGNETIC Snap-fit modular receiver</div>
+              <div><strong>Manufacturing Process:</strong> 3D FDM printing</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://practical-plastic.square.site/shop/snappost/DNPB7E5Q6GSXCVKZ7BM7QCSL" target="_blank" rel="noopener noreferrer" class="flex-1 bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors text-center">
+              Order SNAPPOST →
+            </a>
+            <button onclick="navigateTo('home')" class="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-xl transition-colors text-center">
+              Back to Catalog
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LITHOPHANE Detail Section with Embedded Approval Form -->
+  <section id="lithophane" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors">
+      ← Back to Catalog
+    </button>
+    
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Gallery / Image Box -->
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <!-- Main Display Image -->
+          <img 
+            id="lithophane-main-img"
+            src="lithophane/cid lit 2.jpg" 
+            alt="Custom Backlit Lithophane Detail"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=Lithophane+Detail+Image';"
+            class="w-full h-80 img-contain rounded-lg shadow-sm mb-3 cursor-pointer"
+            onclick="openModal(this.src)"
+          />
+          
+          <!-- Image Gallery Thumbnails -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full">
+            <img 
+              src="lithophane/cid lit 2.jpg" 
+              alt="Cid Lit (Illuminated)"
+              onclick="swapMainImage('lithophane-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="lithophane/cid unlit.jpg" 
+              alt="Cid Unlit (Textured Relief)"
+              onclick="swapMainImage('lithophane-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="lithophane/mika lit 2.jpg" 
+              alt="Mika Lit (Illuminated)"
+              onclick="swapMainImage('lithophane-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="lithophane/mika unlit.jpg" 
+              alt="Mika Unlit (Textured Relief)"
+              onclick="swapMainImage('lithophane-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+          </div>
+
+          <p class="text-xs text-slate-500 mt-3 italic text-center">Click thumbnails to swap view. Click main image to enlarge.</p>
+        </div>
+
+        <!-- Detail Content -->
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Custom Product</span>
+          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">LITHOPHANES</h2>
+          <h3 class="text-lg font-bold text-red-700 mb-4">Custom Backlit Lithophanes</h3>
+          <h3 class="text-lg font-bold text-slate-700 mb-4">Light Up Your Memories</h3>
+          
+          <div class="border-t border-b border-slate-200 py-3 mb-6 text-sm">
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-slate-500">Standard Size (4.9" x 6.3"):</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$28.00</span>
+            </div>
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-slate-500">Large Size (5.5" x 7.9"):</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$38.00</span>
+            </div>
+            <div class="flex justify-between items-center mt-2 pt-2 border-t border-slate-100">
+              <span class="text-slate-500">Origin:</span>
+              <span class="text-slate-900 font-semibold ml-1">USA Made</span>
+            </div>
+          </div>
+
+          <h4 class="font-bold text-slate-900 text-base mb-3">Why Lithophanes Are Magical:</h4>
+          <ul class="space-y-3 text-slate-700 text-sm mb-6">
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>3D Tactile Appearance:</strong> Unlike flat photos, varying material thicknesses sculpt your image in physical relief.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Breathtaking Backlit Glow:</strong> Internal lighting reveals stunning hidden details, rich shadows, and vibrant depth.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Deeply Personal:</strong> The ultimate custom keepsake of pets, couples, and cherished memories.</span>
+            </li>
+          </ul>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+            <h5 class="text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">Available Sizes & Options</h5>
+            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700">
+              <div><strong>Standard:</strong> 4.9" x 6.3"</div>
+              <div><strong>Large:</strong> 5.5" x 7.9"</div>
+              <div class="col-span-2"><strong>Includes:</strong> Black 3D printed frame with backlit LEDs</div>
+            </div>
+          </div>
+
+          <div>
+            <a href="#lithophane-form-section" class="block w-full text-center bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors">
+              Submit Photo for Approval ↓
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lithophane Photo Review & Order Request Form Box -->
+    <div id="lithophane-form-section" class="bg-white border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10 max-w-3xl mx-auto">
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-2">Request a Custom Lithophane</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          If you're interested in a custom lithophane, please complete this form and submit your photo for approval. 
+          <strong class="text-slate-900">Please note:</strong> Not all photos will be compatible with a lithophane product due to quality and contrast requirements.
+        </p>
+      </div>
+
+      <!-- Replace action URL with your Formspree endpoint once registered -->
+      <form action="https://formspree.io/f/xvkgaagz" method="POST" enctype="multipart/form-data" class="space-y-4">
+        
+        <div>
+          <label for="name" class="block text-sm font-bold text-slate-700 mb-1">Your Name</label>
+          <input type="text" id="name" name="name" required placeholder="John Doe" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-700">
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-bold text-slate-700 mb-1">Email Address</label>
+          <input type="email" id="email" name="_replyto" required placeholder="your@email.com" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-700">
+        </div>
+
+        <div>
+          <label for="size" class="block text-sm font-bold text-slate-700 mb-1">Preferred Size</label>
+          <select id="size" name="size" class="w-full p-3 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-red-700">
+            <option value="Standard (4.9 x 6.3) - $28">Standard Size (4.9" x 6.3") - $28.00</option>
+            <option value="Large (5.5 x 7.9) - $38">Large Size (5.5" x 7.9") - $38.00</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="photo" class="block text-sm font-bold text-slate-700 mb-1">Upload Photo for Review</label>
+          <input type="file" id="photo" name="photo" accept="image/png, image/jpeg, image/jpg" required class="w-full p-2 border border-slate-300 rounded-lg text-sm bg-slate-50 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-red-100 file:text-red-800 hover:file:bg-red-200">
+          <small class="text-xs text-slate-500 mt-1 block">Accepted formats: JPG, PNG. High contrast photos work best!</small>
+        </div>
+
+        <div>
+          <label for="notes" class="block text-sm font-bold text-slate-700 mb-1">Additional Details / Requests</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Let me know any special instructions or questions..." class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-700"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition-colors text-base cursor-pointer">
+          Submit Photo for Review
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Image Lightbox Modal -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <img class="modal-content" id="modalImg" alt="Enlarged view">
+  </div>
+
+  <footer class="text-center text-xs text-slate-500 mt-8 border-t border-slate-200 pt-6 max-w-6xl mx-auto w-full">
+    &copy; Practical Plastic. All rights reserved.
+  </footer>
+
+  <script>
+    // --- Navigation Helpers ---
+    function navigateTo(pageId) {
+      document.querySelectorAll('.view-page').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      const targetPage = document.getElementById(pageId);
+      const targetNav = document.getElementById('nav-' + pageId);
+
+      if (targetPage) targetPage.classList.add('active');
+      if (targetNav) targetNav.nav-btn?.classList.add('active') || targetNav.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function swapMainImage(targetId, src) {
+      document.getElementById(targetId).src = src;
+    }
+
+    function openModal(src) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      modal.style.display = 'flex';
+      modalImg.src = src;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
