@@ -95,16 +95,13 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between p-4 md:p-8 bg-slate-50 text-slate-900">
 
-  <header class="text-center max-w-5xl mx-auto w-full mb-8">
+  <header class="text-center max-w-6xl mx-auto w-full mb-8">
     <a href="#home" onclick="navigateTo('home')" class="inline-block group">
       <h1 class="text-3xl md:text-5xl font-black tracking-wider text-slate-900 uppercase mb-1 group-hover:text-red-700 transition-colors">
         Practical Plastic
       </h1>
     </a>
-    <div class="inline-block bg-amber-100 border border-amber-300 text-amber-900 font-bold px-4 py-1.5 rounded-lg text-xs md:text-sm tracking-wide mb-3">
-      Website Under Construction. Lithophane Order Form Coming Soon!
-    </div>
-    <p class="text-xs md:text-sm font-bold text-slate-600 uppercase tracking-widest mb-3">
+    <p class="text-xs md:text-sm font-bold text-slate-600 uppercase tracking-widest mb-3 mt-2">
       3D Designed ★ 3D Printed ★ Original Products
     </p>
     <div class="inline-block bg-slate-900 text-white font-extrabold italic px-5 py-2 rounded-lg shadow-md text-sm md:text-base tracking-wide mb-6">
@@ -122,14 +119,17 @@
       <button id="nav-snappost" onclick="navigateTo('snappost')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
         SNAPPOST™
       </button>
+      <button id="nav-lithophane" onclick="navigateTo('lithophane')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+        CUSTOM LITHOPHANES
+      </button>
       <a href="https://practical-plastic.square.site/s/shop" target="_blank" rel="noopener noreferrer" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm bg-red-700 text-white hover:bg-red-800 transition-all shadow-sm text-center">
         Order / Checkout
       </a>
     </nav>
   </header>
 
-  <main id="home" class="view-page active max-w-5xl mx-auto w-full mb-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <main id="home" class="view-page active max-w-6xl mx-auto w-full mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       
       <!-- SNAPSHIELD Card -->
       <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
@@ -191,6 +191,35 @@
           </a>
           <a href="https://practical-plastic.square.site/shop/snappost/DNPB7E5Q6GSXCVKZ7BM7QCSL" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
             Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- LITHOPHANE Card -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
+            <img 
+              src="lithophane/cid lit 2.jpg" 
+              alt="Custom Backlit Lithophanes"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=Lithophane+Product+Image';"
+              class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onclick="openModal(this.src)"
+            />
+          </div>
+          <div class="p-6">
+            <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">CUSTOM LITHOPHANES</h2>
+            <div class="text-xs font-bold text-red-700 uppercase tracking-wider mb-4">Custom Backlit Lithophanes</div>
+            <ul class="space-y-2 mb-6 text-slate-600 text-sm">
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> 3D tactile physical relief appearance.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Breathtaking backlit glow illumination.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> The ultimate custom keepsake for memories.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 pt-0 space-y-2">
+          <a href="#lithophane" onclick="navigateTo('lithophane')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+            View Details & Order Form
           </a>
         </div>
       </div>
@@ -359,7 +388,6 @@
               onclick="swapMainImage('snappost-main-img', this.src)"
               class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
              />
-            <!-- Newly Added Images -->
             <img 
               src="snappost/cat topper 2.jpg" 
               alt="SNAPPOST Cat Topper"
@@ -465,13 +493,169 @@
     </div>
   </section>
 
+  <!-- LITHOPHANE Detail Section with Embedded Approval Form -->
+  <section id="lithophane" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors">
+      ← Back to Catalog
+    </button>
+    
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Gallery / Image Box -->
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <!-- Main Display Image -->
+          <img 
+            id="lithophane-main-img"
+            src="lithophane/cid lit 2.jpg" 
+            alt="Custom Backlit Lithophane Detail"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=Lithophane+Detail+Image';"
+            class="w-full h-80 img-contain rounded-lg shadow-sm mb-3 cursor-pointer"
+            onclick="openModal(this.src)"
+          />
+          
+          <!-- Image Gallery Thumbnails -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full">
+            <img 
+              src="lithophane/cid lit 2.jpg" 
+              alt="Cid Lit (Illuminated)"
+              onclick="swapMainImage('lithophane-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="lithophane/cid unlit.jpg" 
+              alt="Cid Unlit (Textured Relief)"
+              onclick="swapMainImage('lithophane-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="lithophane/mika lit 2.jpg" 
+              alt="Mika Lit (Illuminated)"
+              onclick="swapMainImage('lithophane-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+            <img 
+              src="lithophane/mika unlit.jpg" 
+              alt="Mika Unlit (Textured Relief)"
+              onclick="swapMainImage('lithophane-main-img', this.src)"
+              class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer transition-all"
+            />
+          </div>
+
+          <p class="text-xs text-slate-500 mt-3 italic text-center">Click thumbnails to swap view. Click main image to enlarge.</p>
+        </div>
+
+        <!-- Detail Content -->
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Custom Product</span>
+          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">LITHOPHANES</h2>
+          <h3 class="text-lg font-bold text-red-700 mb-4">Custom Backlit Lithophanes</h3>
+          <h3 class="text-lg font-bold text-slate-700 mb-4">Light Up Your Memories</h3>
+          
+          <div class="border-t border-b border-slate-200 py-3 mb-6 text-sm">
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-slate-500">Standard Size (4.9" x 6.3"):</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$28.00</span>
+            </div>
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-slate-500">Large Size (5.5" x 7.9"):</span>
+              <span class="text-slate-900 font-extrabold text-base ml-1">$38.00</span>
+            </div>
+            <div class="flex justify-between items-center mt-2 pt-2 border-t border-slate-100">
+              <span class="text-slate-500">Origin:</span>
+              <span class="text-slate-900 font-semibold ml-1">USA Made</span>
+            </div>
+          </div>
+
+          <h4 class="font-bold text-slate-900 text-base mb-3">Why Lithophanes Are Magical:</h4>
+          <ul class="space-y-3 text-slate-700 text-sm mb-6">
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>3D Tactile Appearance:</strong> Unlike flat photos, varying material thicknesses sculpt your image in physical relief.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Breathtaking Backlit Glow:</strong> Internal lighting reveals stunning hidden details, rich shadows, and vibrant depth.</span>
+            </li>
+            <li class="flex items-start">
+              <span class="bg-red-700 text-white text-xs rounded-full p-1 mr-3 mt-0.5">✓</span>
+              <span><strong>Deeply Personal:</strong> The ultimate custom keepsake of pets, couples, and cherished memories.</span>
+            </li>
+          </ul>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+            <h5 class="text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-2">Available Sizes & Options</h5>
+            <div class="grid grid-cols-2 gap-2 text-xs text-slate-700">
+              <div><strong>Standard:</strong> 4.9" x 6.3"</div>
+              <div><strong>Large:</strong> 5.5" x 7.9"</div>
+              <div class="col-span-2"><strong>Includes:</strong> Black 3D printed frame with backlit LEDs</div>
+            </div>
+          </div>
+
+          <div>
+            <a href="#lithophane-form-section" class="block w-full text-center bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors">
+              Submit Photo for Approval ↓
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lithophane Photo Review & Order Request Form Box -->
+    <div id="lithophane-form-section" class="bg-white border border-slate-200 rounded-2xl shadow-lg p-6 md:p-10 max-w-3xl mx-auto">
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-2">Request a Custom Lithophane</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          If you're interested in a custom lithophane, please complete this form and submit your photo for approval. 
+          <strong class="text-slate-900">Please note:</strong> Not all photos will be compatible with a lithophane product due to quality and contrast requirements.
+        </p>
+      </div>
+
+      <!-- Form with added ID for JS reset logic -->
+      <form id="lithophaneForm" action="https://formspree.io/f/xvkgaagz" method="POST" enctype="multipart/form-data" class="space-y-4">
+        
+        <div>
+          <label for="name" class="block text-sm font-bold text-slate-700 mb-1">Your Name</label>
+          <input type="text" id="name" name="name" required placeholder="John Doe" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-700">
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-bold text-slate-700 mb-1">Email Address</label>
+          <input type="email" id="email" name="_replyto" required placeholder="your@email.com" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-700">
+        </div>
+
+        <div>
+          <label for="size" class="block text-sm font-bold text-slate-700 mb-1">Preferred Size</label>
+          <select id="size" name="size" class="w-full p-3 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-red-700">
+            <option value="Standard (4.9 x 6.3) - $28">Standard Size (4.9" x 6.3") - $28.00</option>
+            <option value="Large (5.5 x 7.9) - $38">Large Size (5.5" x 7.9") - $38.00</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="photo" class="block text-sm font-bold text-slate-700 mb-1">Upload Photo for Review</label>
+          <input type="file" id="photo" name="photo" accept="image/png, image/jpeg, image/jpg" required class="w-full p-2 border border-slate-300 rounded-lg text-sm bg-slate-50 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-red-100 file:text-red-800 hover:file:bg-red-200">
+          <small class="text-xs text-slate-500 mt-1 block">Accepted formats: JPG, PNG. High contrast photos work best!</small>
+        </div>
+
+        <div>
+          <label for="notes" class="block text-sm font-bold text-slate-700 mb-1">Additional Details / Requests</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Let me know any special instructions or questions..." class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-700"></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition-colors text-base cursor-pointer">
+          Submit Photo for Review
+        </button>
+      </form>
+    </div>
+  </section>
+
   <!-- Image Lightbox Modal -->
   <div id="imageModal" class="modal" onclick="closeModal()">
     <button class="close-btn" onclick="closeModal()">&times;</button>
     <img class="modal-content" id="modalImg" alt="Enlarged view">
   </div>
 
-  <footer class="text-center text-xs text-slate-500 mt-8 border-t border-slate-200 pt-6 max-w-5xl mx-auto w-full">
+  <footer class="text-center text-xs text-slate-500 mt-8 border-t border-slate-200 pt-6 max-w-6xl mx-auto w-full">
     &copy; Practical Plastic. All rights reserved.
   </footer>
 
@@ -485,7 +669,7 @@
       const targetNav = document.getElementById('nav-' + pageId);
 
       if (targetPage) targetPage.classList.add('active');
-      if (targetNav) targetNav.classList.add('active');
+      if (targetNav) targetNav.nav-btn?.classList.add('active') || targetNav.classList.add('active');
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -503,6 +687,16 @@
 
     function closeModal() {
       document.getElementById('imageModal').style.display = 'none';
+    }
+
+    // --- Clear Form on Submit ---
+    const lithoForm = document.getElementById('lithophaneForm');
+    if (lithoForm) {
+      lithoForm.addEventListener('submit', function() {
+        setTimeout(() => {
+          lithoForm.reset();
+        }, 500);
+      });
     }
   </script>
 
