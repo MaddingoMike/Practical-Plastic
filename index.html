@@ -313,23 +313,57 @@
     </div>
   </section>
 
-  <!-- LITHOPHANE VIEW -->
+  <!-- LITHOPHANE VIEW WITH ORDER FORM & INSTRUCTIONS -->
   <section id="lithophane" class="view-page max-w-5xl mx-auto w-full mb-12">
     <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
       ← Back to Catalog
     </button>
     <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-8">
         <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
           <img src="lithophane/cid lit 2.jpg" alt="Lithophane Detail" onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=Lithophane+Detail';" class="w-full h-80 img-contain rounded-lg shadow-sm mb-3 cursor-pointer" onclick="openModal(this.src)"/>
         </div>
         <div>
           <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Custom Keepsake</span>
-          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">CUSTOM LITHOPHANES</h2>
-          <h3 class="text-lg font-bold text-red-700 mb-4">Custom Backlit Lithophanes</h3>
-          <p class="text-slate-600 mb-4">Turn your favorite photos into breathtaking backlit 3D tactile art pieces. The ultimate custom keepsake for cherished memories.</p>
-          <button onclick="navigateTo('home')" class="w-full text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-lg transition-colors cursor-pointer">Back to Catalog</button>
+          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">CUSTOM LITHOPHANE ORDER FORM</h2>
+          <h3 class="text-lg font-bold text-red-700 mb-4">Turn Your Memories into Backlit Art</h3>
+          <p class="text-slate-600 mb-4 text-sm">
+            Custom backlit lithophanes transform your favorite personal photos into tactile 3D relief prints that spring to life when illuminated from behind.
+          </p>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-2 mb-4">
+            <p class="font-bold text-slate-800 uppercase">How to Order:</p>
+            <p>1. Fill out your details and instructions below.</p>
+            <p>2. Attach your high-resolution image file.</p>
+            <p>3. Submit your request, and we will follow up to finalize your proof and payment!</p>
+          </div>
         </div>
+      </div>
+
+      <!-- Formspree Submission Form -->
+      <div class="border-t border-slate-200 pt-8">
+        <form action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Your Name</label>
+              <input type="text" name="name" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-red-700 focus:outline-none" placeholder="John Doe">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Email Address</label>
+              <input type="email" name="email" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-red-700 focus:outline-none" placeholder="john@example.com">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Upload Your Photo</label>
+            <input type="file" name="photo" accept="image/*" required class="w-full border border-slate-300 rounded-lg p-2 text-sm bg-slate-50 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-red-700 file:text-white hover:file:bg-red-800 cursor-pointer">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Project Notes & Custom Requests</label>
+            <textarea name="message" rows="4" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-red-700 focus:outline-none" placeholder="Specify size preferences, framing options, or specific cropping instructions..."></textarea>
+          </div>
+          <button type="submit" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow transition-colors cursor-pointer">
+            Submit Custom Lithophane Request
+          </button>
+        </form>
       </div>
     </div>
   </section>
