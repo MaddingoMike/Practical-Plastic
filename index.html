@@ -96,11 +96,11 @@
 <body class="min-h-screen flex flex-col justify-between p-4 md:p-8 bg-slate-50 text-slate-900">
 
   <header class="text-center max-w-6xl mx-auto w-full mb-8">
-    <a href="#home" onclick="navigateTo('home')" class="inline-block group">
+    <button onclick="navigateTo('home')" class="inline-block group cursor-pointer bg-transparent border-none p-0">
       <h1 class="text-3xl md:text-5xl font-black tracking-wider text-slate-900 uppercase mb-1 group-hover:text-red-700 transition-colors">
         Practical Plastic
       </h1>
-    </a>
+    </button>
     <p class="text-xs md:text-sm font-bold text-slate-600 uppercase tracking-widest mb-3 mt-2">
       3D Designed ★ 3D Printed ★ Original Products
     </p>
@@ -110,19 +110,19 @@
 
     <!-- Navigation Bar -->
     <nav class="flex flex-wrap justify-center items-center gap-2 md:gap-4 border-b border-slate-200 pb-4">
-      <button id="nav-home" onclick="navigateTo('home')" class="nav-btn active px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+      <button id="nav-home" onclick="navigateTo('home')" class="nav-btn active px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
         All Products
       </button>
-      <button id="nav-snapshield" onclick="navigateTo('snapshield')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+      <button id="nav-snapshield" onclick="navigateTo('snapshield')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
         SNAPSHIELD™
       </button>
-      <button id="nav-snappost" onclick="navigateTo('snappost')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+      <button id="nav-snappost" onclick="navigateTo('snappost')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
         SNAPPOST™
       </button>
-      <button id="nav-lithophane" onclick="navigateTo('lithophane')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+      <button id="nav-lithophane" onclick="navigateTo('lithophane')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
         CUSTOM LITHOPHANES
       </button>
-      <button id="nav-slipperkinz" onclick="navigateTo('slipperkinz')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent">
+      <button id="nav-slipperkinz" onclick="navigateTo('slipperkinz')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
         SLIPPERKINZ™
       </button>
       <a href="https://practical-plastic.square.site/s/shop" target="_blank" rel="noopener noreferrer" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm bg-red-700 text-white hover:bg-red-800 transition-all shadow-sm text-center">
@@ -157,9 +157,9 @@
           </div>
         </div>
         <div class="p-6 pt-0 space-y-2">
-          <a href="#snapshield" onclick="navigateTo('snapshield')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+          <button onclick="navigateTo('snapshield')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors cursor-pointer">
             View Details
-          </a>
+          </button>
           <a href="https://practical-plastic.square.site/shop/snapshield/7FPAO3V2NW5SNBIMDLRDBDOV" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
             Order Now
           </a>
@@ -189,9 +189,9 @@
           </div>
         </div>
         <div class="p-6 pt-0 space-y-2">
-          <a href="#snappost" onclick="navigateTo('snappost')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+          <button onclick="navigateTo('snappost')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors cursor-pointer">
             View Details
-          </a>
+          </button>
           <a href="https://practical-plastic.square.site/shop/snappost/DNPB7E5Q6GSXCVKZ7BM7QCSL" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
             Order Now
           </a>
@@ -221,9 +221,9 @@
           </div>
         </div>
         <div class="p-6 pt-0 space-y-2">
-          <a href="#lithophane" onclick="navigateTo('lithophane')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+          <button onclick="navigateTo('lithophane')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors cursor-pointer">
             View Details & Order Form
-          </a>
+          </button>
         </div>
       </div>
 
@@ -251,9 +251,9 @@
           </div>
         </div>
         <div class="p-6 pt-0 space-y-2">
-          <a href="#slipperkinz" onclick="navigateTo('slipperkinz')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors">
+          <button onclick="navigateTo('slipperkinz')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors cursor-pointer">
             View Details
-          </a>
+          </button>
         </div>
       </div>
 
@@ -261,7 +261,7 @@
   </main>
 
   <section id="snapshield" class="view-page max-w-5xl mx-auto w-full mb-12">
-    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
       ← Back to Catalog
     </button>
     
@@ -310,4 +310,77 @@
           <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPSHIELD™</h2>
           <h3 class="text-lg font-bold text-red-700 mb-4">Magnetic Paint Protection</h3>
           
-          <div class="border
+          <p class="text-slate-600 mb-4">
+            SNAPSHIELD™ is the professional painter's and DIYer's best friend. Designed to protect electrical outlets, switches, and receptacles from paint overspray, joint compound, and dust without the hassle of messy blue tape.
+          </p>
+
+          <div class="space-y-3 mb-6 text-slate-700 text-sm">
+            <div class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> <strong>Powerful Neodymium Magnets:</strong> Snaps securely onto standard metal electrical box screw heads instantly.</div>
+            <div class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> <strong>Reusable & Durable:</strong> Printed with durable, high-impact materials designed for job-after-job reliability.</div>
+            <div class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> <strong>Time Saver:</strong> Zero cleanup scraping paint off switches and covers. Snap on before painting, snap off when dry!</div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://practical-plastic.square.site/shop/snapshield/7FPAO3V2NW5SNBIMDLRDBDOV" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow transition-colors">
+              Order Now on Square
+            </a>
+            <button onclick="navigateTo('home')" class="flex-1 text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-lg transition-colors cursor-pointer">
+              Back to All Products
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Similar view structures for snappost, lithophane, and slipperkinz would follow here -->
+
+  <!-- Modal Component for Image Zoom -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <img class="modal-content" id="modalImg" alt="Enlarged View">
+  </div>
+
+  <footer class="text-center max-w-6xl mx-auto w-full mt-12 border-t border-slate-200 pt-6 text-xs text-slate-500">
+    <p>&copy; Practical Plastic. All rights reserved. Clever Ideas. Practically Printed.</p>
+  </footer>
+
+  <script>
+    function navigateTo(pageId) {
+      document.querySelectorAll('.view-page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      const targetPage = document.getElementById(pageId);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+
+      const targetNav = document.getElementById('nav-' + pageId);
+      if (targetNav) {
+        targetNav.classList.add('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function swapMainImage(mainImgId, newSrc) {
+      document.getElementById(mainImgId).src = newSrc;
+    }
+
+    function openModal(imgSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      modal.style.display = 'flex';
+      modalImg.src = imgSrc;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
