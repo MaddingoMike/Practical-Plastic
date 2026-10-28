@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Plastic - Clever Ideas. Practically Printed.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #b91c1c;
+      --accent-hover: #991b1b;
+      --navy: #0f172a;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+
+    .img-contain {
+      object-fit: contain;
+      background-color: #f1f5f9;
+    }
+
+    .view-page {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.25s ease-in-out;
+    }
+
+    .view-page.active {
+      display: block;
+      opacity: 1;
+    }
+
+    .nav-btn.active {
+      background-color: #b91c1c;
+      color: #ffffff;
+      border-color: #b91c1c;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+      padding: 5px 15px;
+      transition: color 0.2s;
+    }
+
+    .close-btn:hover {
+      color: #bbb;
+    }
+
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
+  </style>
+  <script src="https://cdn.counter.dev/script.js" data-id="e5058050-ca37-456a-b09a-e3cb49e2c3cc" data-utcoffset="-4"></script>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-4 md:p-8 bg-slate-50 text-slate-900">
+
+  <header class="text-center max-w-6xl mx-auto w-full mb-8">
+    <button onclick="navigateTo('home')" class="inline-block group cursor-pointer bg-transparent border-none p-0">
+      <h1 class="text-3xl md:text-5xl font-black tracking-wider text-slate-900 uppercase mb-1 group-hover:text-red-700 transition-colors">
+        Practical Plastic
+      </h1>
+    </button>
+    <p class="text-xs md:text-sm font-bold text-slate-600 uppercase tracking-widest mb-3 mt-2">
+      3D Designed ★ 3D Printed ★ Original Products
+    </p>
+    <div class="inline-block bg-slate-900 text-white font-extrabold italic px-5 py-2 rounded-lg shadow-md text-sm md:text-base tracking-wide mb-6">
+      CLEVER IDEAS. PRACTICALLY PRINTED.
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="flex flex-wrap justify-center items-center gap-2 md:gap-4 border-b border-slate-200 pb-4">
+      <button id="nav-home" onclick="navigateTo('home')" class="nav-btn active px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
+        All Products
+      </button>
+      <button id="nav-snapshield" onclick="navigateTo('snapshield')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
+        SNAPSHIELD™
+      </button>
+      <button id="nav-snappost" onclick="navigateTo('snappost')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
+        SNAPPOST™
+      </button>
+      <button id="nav-lithophane" onclick="navigateTo('lithophane')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
+        CUSTOM LITHOPHANES
+      </button>
+      <button id="nav-slipperkinz" onclick="navigateTo('slipperkinz')" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm text-slate-700 hover:bg-slate-200 transition-all border border-transparent cursor-pointer">
+        SLIPPERKINZ™
+      </button>
+      <a href="https://practical-plastic.square.site/s/shop" target="_blank" rel="noopener noreferrer" class="nav-btn px-4 py-2 rounded-lg font-bold text-sm bg-red-700 text-white hover:bg-red-800 transition-all shadow-sm text-center">
+        Order / Checkout
+      </a>
+    </nav>
+  </header>
+
+  <!-- HOME VIEW -->
+  <main id="home" class="view-page active max-w-6xl mx-auto w-full mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- SLIPPERKINZ Card (Coming Soon) -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
+            <img 
+              src="slipperkinz/tux003.png" 
+              alt="Slipperkinz Coming Soon"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=Slipperkinz+Coming+Soon';"
+              class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onclick="openModal(this.src)"
+            />
+          </div>
+          <div class="p-6">
+            <div class="inline-block bg-red-100 text-red-800 text-xs font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider mb-2">Coming Soon!</div>
+            <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">SLIPPERKINZ™</h2>
+            <div class="text-xs font-bold text-red-700 uppercase tracking-wider mb-4">Adorable animals. Ridiculous slippers.™</div>
+            <ul class="space-y-2 mb-6 text-slate-600 text-sm">
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Coming Soon to Practical Plastic!</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Each character will be available as a Statue, Keychain and Clicker!</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Check back often for release updates.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 pt-0 space-y-2">
+          <button onclick="navigateTo('slipperkinz')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors cursor-pointer">
+            View Details
+          </button>
+        </div>
+      </div>
+      
+      <!-- SNAPSHIELD Card -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
+            <img 
+              src="snapshield/product and packaging 2.jpg" 
+              alt="SNAPSHIELD Magnetic Paint Protection"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=SNAPSHIELD+Product+Image';"
+              class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onclick="openModal(this.src)"
+            />
+          </div>
+          <div class="p-6">
+            <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPSHIELD™</h2>
+            <div class="text-xs font-bold text-red-700 uppercase tracking-wider mb-4">Magnetic Paint Protection</div>
+            <ul class="space-y-2 mb-6 text-slate-600 text-sm">
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Protects switches & receptacles from paint overspray.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Installs in a Snap with powerful magnets!</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> No need for messy tape.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 pt-0 space-y-2">
+          <button onclick="navigateTo('snapshield')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors cursor-pointer">
+            View Details
+          </button>
+          <a href="https://practical-plastic.square.site/shop/snapshield/7FPAO3V2NW5SNBIMDLRDBDOV" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
+            Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- SNAPPOST Card -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
+            <img 
+              src="snappost/flag 01.png" 
+              alt="SNAPPOST Interchangeable Fence Post Caps"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=SNAPPOST+Product+Image';"
+              class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onclick="openModal(this.src)"
+            />
+          </div>
+          <div class="p-6">
+            <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPPOST™</h2>
+            <div class="text-xs font-bold text-red-700 uppercase tracking-wider mb-4">Interchangeable Fence Post Caps</div>
+            <ul class="space-y-2 mb-6 text-slate-600 text-sm">
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Snap in a flag or decorative Topper.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Snap in a blank plug when not in use.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Strong. Secure. Simple.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 pt-0 space-y-2">
+          <button onclick="navigateTo('snappost')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors cursor-pointer">
+            View Details
+          </button>
+          <a href="https://practical-plastic.square.site/shop/snappost/DNPB7E5Q6GSXCVKZ7BM7QCSL" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-100 hover:bg-red-200 text-red-800 font-bold py-2.5 px-4 rounded-lg transition-colors text-sm">
+            Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- LITHOPHANE Card -->
+      <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="relative w-full h-64 p-3 bg-slate-100 flex items-center justify-center overflow-hidden">
+            <img 
+              src="lithophane/cid lit 2.jpg" 
+              alt="Custom Backlit Lithophanes"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x400/0f172a/ffffff?text=Lithophane+Product+Image';"
+              class="w-full h-full img-contain rounded-md transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+              onclick="openModal(this.src)"
+            />
+          </div>
+          <div class="p-6">
+            <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">CUSTOM LITHOPHANES</h2>
+            <div class="text-xs font-bold text-red-700 uppercase tracking-wider mb-4">Custom Backlit Lithophanes</div>
+            <ul class="space-y-2 mb-6 text-slate-600 text-sm">
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> 3D tactile physical relief appearance.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> Breathtaking backlit glow illumination.</li>
+              <li class="flex items-start"><span class="text-red-700 font-bold mr-2">✓</span> The ultimate custom keepsake for memories.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="p-6 pt-0 space-y-2">
+          <button onclick="navigateTo('lithophane')" class="block w-full text-center bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-lg shadow transition-colors cursor-pointer">
+            View Details & Order Form
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- SNAPSHIELD VIEW -->
+  <section id="snapshield" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
+      ← Back to Catalog
+    </button>
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <img id="snapshield-main-img" src="snapshield/snapshield_product_front.jpg" alt="SNAPSHIELD Detail" onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=SNAPSHIELD+Detail';" class="w-full h-80 img-contain rounded-lg shadow-sm mb-3 cursor-pointer" onclick="openModal(this.src)"/>
+          <div class="grid grid-cols-2 gap-2 w-full">
+            <img src="snapshield/snapshield_product_front.jpg" onclick="swapMainImage('snapshield-main-img', this.src)" class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer"/>
+            <img src="snapshield/receptacle_1.jpg" onclick="swapMainImage('snapshield-main-img', this.src)" class="w-full h-20 bg-slate-200 object-contain object-top pt-1 rounded-md border-2 border-slate-300 hover:border-red-700 cursor-pointer"/>
+          </div>
+        </div>
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Original Product</span>
+          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPSHIELD™</h2>
+          <h3 class="text-lg font-bold text-red-700 mb-4">Magnetic Paint Protection</h3>
+          <p class="text-slate-600 mb-4">Protects electrical outlets and switches from paint overspray instantly without messy tape.</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://practical-plastic.square.site/shop/snapshield/7FPAO3V2NW5SNBIMDLRDBDOV" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow transition-colors">Order Now on Square</a>
+            <button onclick="navigateTo('home')" class="flex-1 text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-lg transition-colors cursor-pointer">Back to Catalog</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SNAPPOST VIEW -->
+  <section id="snappost" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
+      ← Back to Catalog
+    </button>
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <img id="snappost-main-img" src="snappost/flag 01.png" alt="SNAPPOST Detail" onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=SNAPPOST+Detail';" class="w-full h-80 img-contain rounded-lg shadow-sm mb-3 cursor-pointer" onclick="openModal(this.src)"/>
+        </div>
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Original Product</span>
+          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">SNAPPOST™</h2>
+          <h3 class="text-lg font-bold text-red-700 mb-4">Interchangeable Fence Post Caps</h3>
+          <p class="text-slate-600 mb-4">Snap in a flag, decorative topper, or blank plug instantly with strong, secure, and simple modular design.</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://practical-plastic.square.site/shop/snappost/DNPB7E5Q6GSXCVKZ7BM7QCSL" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow transition-colors">Order Now on Square</a>
+            <button onclick="navigateTo('home')" class="flex-1 text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-lg transition-colors cursor-pointer">Back to Catalog</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LITHOPHANE VIEW WITH ORDER FORM & INSTRUCTIONS -->
+  <section id="lithophane" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
+      ← Back to Catalog
+    </button>
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-8">
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <img src="lithophane/cid lit 2.jpg" alt="Lithophane Detail" onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=Lithophane+Detail';" class="w-full h-80 img-contain rounded-lg shadow-sm mb-3 cursor-pointer" onclick="openModal(this.src)"/>
+        </div>
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Custom Keepsake</span>
+          <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">CUSTOM LITHOPHANE ORDER FORM</h2>
+          <h3 class="text-lg font-bold text-red-700 mb-4">Turn Your Memories into Backlit Art</h3>
+          <p class="text-slate-600 mb-4 text-sm">
+            Custom backlit lithophanes transform your favorite personal photos into tactile 3D relief prints that spring to life when illuminated from behind.
+          </p>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-600 space-y-2 mb-4">
+            <p class="font-bold text-slate-800 uppercase">How to Order:</p>
+            <p>1. Fill out your details and instructions below.</p>
+            <p>2. Attach your high-resolution image file.</p>
+            <p>3. Submit your request, and we will follow up to finalize your proof and payment!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formspree Submission Form -->
+      <div class="border-t border-slate-200 pt-8">
+        <form action="https://formspree.io/f/your-form-id" method="POST" enctype="multipart/form-data" class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Your Name</label>
+              <input type="text" name="name" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-red-700 focus:outline-none" placeholder="John Doe">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Email Address</label>
+              <input type="email" name="email" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-red-700 focus:outline-none" placeholder="john@example.com">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Upload Your Photo</label>
+            <input type="file" name="photo" accept="image/*" required class="w-full border border-slate-300 rounded-lg p-2 text-sm bg-slate-50 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-red-700 file:text-white hover:file:bg-red-800 cursor-pointer">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-700 mb-1">Project Notes & Custom Requests</label>
+            <textarea name="message" rows="4" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm focus:ring-2 focus:ring-red-700 focus:outline-none" placeholder="Specify size preferences, framing options, or specific cropping instructions..."></textarea>
+          </div>
+          <button type="submit" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-lg shadow transition-colors cursor-pointer">
+            Submit Custom Lithophane Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN SLIPPERKINZ CATALOG VIEW -->
+  <section id="slipperkinz" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('home')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
+      ← Back to Catalog
+    </button>
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 space-y-10">
+      
+      <div class="text-center mb-6">
+        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Coming Soon</span>
+        <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">SLIPPERKINZ™ COLLECTION</h2>
+        <h3 class="text-lg font-bold text-red-700">Adorable animals. Ridiculous slippers.™</h3>
+        <p class="text-slate-600 mt-2 text-sm">Click on any character below to explore their dedicated lineup of Statues, Clickers, and Keychains!</p>
+      </div>
+
+      <!-- Character 1: Tux -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pb-8 border-b border-slate-200">
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <img src="slipperkinz/tux003.png" alt="Slipperkinz Tux" onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=Slipperkinz+Tux';" class="w-full h-80 img-contain rounded-lg shadow-sm cursor-pointer" onclick="openModal(this.src)"/>
+        </div>
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Character Profile</span>
+          <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">TUX™</h2>
+          <p class="text-slate-600 mb-4">Meet Tux: a cool cat with a fishy sense of fashion.</p>
+          <button onclick="navigateTo('slipperkinz-tux')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-5 rounded-lg text-sm transition-colors cursor-pointer">
+            View Tux's Products →
+          </button>
+        </div>
+      </div>
+
+      <!-- Character 2: Gouda -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pb-8 border-b border-slate-200">
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <img src="slipperkinz/gouda example.png" alt="Slipperkinz Gouda" onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=Slipperkinz+Gouda';" class="w-full h-80 img-contain rounded-lg shadow-sm cursor-pointer" onclick="openModal(this.src)"/>
+        </div>
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Character Profile</span>
+          <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">GOUDA™</h2>
+          <p class="text-slate-600 mb-4">Meet Gouda - "Don't call him cheesy"</p>
+          <button onclick="navigateTo('slipperkinz-gouda')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-5 rounded-lg text-sm transition-colors cursor-pointer">
+            View Gouda's Products →
+          </button>
+        </div>
+      </div>
+
+      <!-- Character 3: Bessie -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pb-8 border-b border-slate-200">
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <img src="slipperkinz/bessie 1.png" alt="Slipperkinz Bessie" onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=Slipperkinz+Bessie';" class="w-full h-80 img-contain rounded-lg shadow-sm cursor-pointer" onclick="openModal(this.src)"/>
+        </div>
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Character Profile</span>
+          <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">BESSIE™</h2>
+          <p class="text-slate-600 mb-4">Meet Bessie - "Always in a good mooood"</p>
+          <button onclick="navigateTo('slipperkinz-bessie')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-5 rounded-lg text-sm transition-colors cursor-pointer">
+            View Bessie's Products →
+          </button>
+        </div>
+      </div>
+
+      <!-- Character 4: Bongo -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="bg-slate-100 p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <img src="slipperkinz/bongo 1.png" alt="Slipperkinz Bongo" onerror="this.onerror=null; this.src='https://placehold.co/600x500/0f172a/ffffff?text=Slipperkinz+Bongo';" class="w-full h-80 img-contain rounded-lg shadow-sm cursor-pointer" onclick="openModal(this.src)"/>
+        </div>
+        <div>
+          <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Character Profile</span>
+          <h2 class="text-2xl font-black text-slate-900 tracking-wide uppercase mb-1">BONGO™</h2>
+          <p class="text-slate-600 mb-4">Meet Bongo: “The mischievous monkey that's just plain bananas!”</p>
+          <button onclick="navigateTo('slipperkinz-bongo')" class="bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-5 rounded-lg text-sm transition-colors cursor-pointer">
+            View Bongo's Products →
+          </button>
+        </div>
+      </div>
+
+      <!-- Back to Catalog Button -->
+      <div class="pt-4">
+        <button onclick="navigateTo('home')" class="w-full text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-lg transition-colors cursor-pointer">
+          Back to Catalog
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEDICATED MODEL VIEW: TUX -->
+  <section id="slipperkinz-tux" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('slipperkinz')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
+      ← Back to Slipperkinz Catalog
+    </button>
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Coming Soon</span>
+        <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">TUX™ COLLECTION</h2>
+        <p class="text-slate-600">Meet Tux: a cool cat with a fishy sense of fashion.</p>
+      </div>
+      <!-- 3 Products Grid: Statue, Clicker, Keychain -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/tux003.png" alt="Tux Statue" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Statue';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Statue</h4>
+          <p class="text-xs text-slate-600">Statue</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/tux003.png" alt="Tux Clicker" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Clicker';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Clicker</h4>
+          <p class="text-xs text-slate-600">Clicker</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/tux003.png" alt="Tux Keychain" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Keychain';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Keychain</h4>
+          <p class="text-xs text-slate-600">Keychain</p>
+        </div>
+      </div>
+      <button onclick="navigateTo('slipperkinz')" class="w-full text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-lg transition-colors cursor-pointer">
+        Back to Slipperkinz Catalog
+      </button>
+    </div>
+  </section>
+
+  <!-- DEDICATED MODEL VIEW: GOUDA -->
+  <section id="slipperkinz-gouda" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('slipperkinz')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
+      ← Back to Slipperkinz Catalog
+    </button>
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Coming Soon</span>
+        <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">GOUDA™ COLLECTION</h2>
+        <p class="text-slate-600">Meet Gouda - "Don't call him cheesy"</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/gouda example.png" alt="Gouda Statue" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Statue';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Statue</h4>
+          <p class="text-xs text-slate-600">Statue</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/gouda example.png" alt="Gouda Clicker" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Clicker';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Clicker</h4>
+          <p class="text-xs text-slate-600">Clicker</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/gouda example.png" alt="Gouda Keychain" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Keychain';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Keychain</h4>
+          <p class="text-xs text-slate-600">Keychain</p>
+        </div>
+      </div>
+      <button onclick="navigateTo('slipperkinz')" class="w-full text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-lg transition-colors cursor-pointer">
+        Back to Slipperkinz Catalog
+      </button>
+    </div>
+  </section>
+
+  <!-- DEDICATED MODEL VIEW: BESSIE -->
+  <section id="slipperkinz-bessie" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('slipperkinz')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
+      ← Back to Slipperkinz Catalog
+    </button>
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Coming Soon</span>
+        <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">BESSIE™ COLLECTION</h2>
+        <p class="text-slate-600">Meet Bessie - "Always in a good mooood"</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/bessie 1.png" alt="Bessie Statue" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Statue';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Statue</h4>
+          <p class="text-xs text-slate-600">Statue</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/bessie 1.png" alt="Bessie Clicker" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Clicker';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Clicker</h4>
+          <p class="text-xs text-slate-600">Clicker</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/bessie 1.png" alt="Bessie Keychain" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Keychain';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Keychain</h4>
+          <p class="text-xs text-slate-600">Keychain</p>
+        </div>
+      </div>
+      <button onclick="navigateTo('slipperkinz')" class="w-full text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-lg transition-colors cursor-pointer">
+        Back to Slipperkinz Catalog
+      </button>
+    </div>
+  </section>
+
+  <!-- DEDICATED MODEL VIEW: BONGO -->
+  <section id="slipperkinz-bongo" class="view-page max-w-5xl mx-auto w-full mb-12">
+    <button onclick="navigateTo('slipperkinz')" class="inline-flex items-center text-slate-700 font-bold hover:text-red-700 mb-6 transition-colors cursor-pointer bg-transparent border-none">
+      ← Back to Slipperkinz Catalog
+    </button>
+    <div class="bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden p-6 md:p-10 space-y-8">
+      <div class="border-b border-slate-200 pb-4">
+        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Coming Soon</span>
+        <h2 class="text-3xl font-black text-slate-900 tracking-wide uppercase mb-1">BONGO™ COLLECTION</h2>
+        <p class="text-slate-600">Meet Bongo: “The mischievous monkey that's just plain bananas!”</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/bongo 1.png" alt="Bongo Statue" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Statue';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Statue</h4>
+          <p class="text-xs text-slate-600">Statue</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/bongo 1.png" alt="Bongo Clicker" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Clicker';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Clicker</h4>
+          <p class="text-xs text-slate-600">Clicker</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col items-center text-center">
+          <img src="slipperkinz/bongo 1.png" alt="Bongo Keychain" class="w-full h-48 img-contain rounded-md mb-3 cursor-pointer" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0f172a/ffffff?text=Keychain';" onclick="openModal(this.src)"/>
+          <h4 class="font-bold text-slate-900 text-lg mb-1">Keychain</h4>
+          <p class="text-xs text-slate-600">Keychain</p>
+        </div>
+      </div>
+      <button onclick="navigateTo('slipperkinz')" class="w-full text-center bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 px-6 rounded-lg transition-colors cursor-pointer">
+        Back to Slipperkinz Catalog
+      </button>
+    </div>
+  </section>
+  
+  <!-- Modal Component for Image Zoom -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <img class="modal-content" id="modalImg" alt="Enlarged View">
+  </div>
+
+  <footer class="text-center max-w-6xl mx-auto w-full mt-12 border-t border-slate-200 pt-6 text-xs text-slate-500">
+    <p>&copy; Practical Plastic. All rights reserved. Clever Ideas. Practically Printed.</p>
+  </footer>
+
+  <script>
+    function navigateTo(pageId) {
+      document.querySelectorAll('.view-page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      const targetPage = document.getElementById(pageId);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+
+      let navId = pageId;
+      if (pageId.startsWith('slipperkinz-')) {
+        navId = 'slipperkinz';
+      }
+      const targetNav = document.getElementById('nav-' + navId);
+      if (targetNav) {
+        targetNav.classList.add('active');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function swapMainImage(mainImgId, newSrc) {
+      document.getElementById(mainImgId).src = newSrc;
+    }
+
+    function openModal(imgSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      modal.style.display = 'flex';
+      modalImg.src = imgSrc;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
