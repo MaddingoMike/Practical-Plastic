@@ -42,12 +42,6 @@
       box-shadow: 0 4px 14px rgba(204, 0, 0, 0.3);
     }
 
-    /* UPDATED HERO BACKGROUND: Faded 3D printer, filament spools & models backdrop */
-    .hero-bg {
-      background: linear-gradient(135deg, rgba(15, 23, 42, 0.93) 0%, rgba(30, 41, 59, 0.88) 100%), 
-                  url('https://images.unsplash.com/photo-1615840243388-00128a552631?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    }
-
     .product-card {
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     }
@@ -139,23 +133,34 @@
   <!-- HOME VIEW -->
   <main id="home" class="view-page active w-full mb-12">
     
-    <!-- FULL-WIDTH SHOWCASE HERO BANNER WITH FADED 3D PRINTING IMAGE -->
-    <section class="hero-bg text-white py-14 px-6 md:py-20 mb-12 shadow-md">
-      <div class="max-w-6xl mx-auto text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8">
+    <!-- HERO BANNER WITH VISIBLE FADED 3D PRINTING BACKGROUND IMAGE -->
+    <section class="relative bg-slate-900 text-white py-14 px-6 md:py-20 mb-12 shadow-md overflow-hidden">
+      
+      <!-- Background Image -->
+      <img 
+        src="https://images.unsplash.com/photo-1615840243388-00128a552631?auto=format&fit=crop&w=1600&q=80" 
+        alt="3D Printing Workshop" 
+        class="absolute inset-0 w-full h-full object-cover object-center opacity-30"
+      />
+
+      <!-- Dark Tint Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/75 to-slate-950/90"></div>
+
+      <div class="relative z-10 max-w-6xl mx-auto text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8">
         
         <div class="max-w-2xl space-y-4">
-          <div class="inline-block bg-red-600 text-white font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+          <div class="inline-block bg-red-600 text-white font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-sm">
             CLEVER IDEAS. PRACTICALLY PRINTED.
           </div>
-          <h2 class="text-3xl md:text-5xl font-black text-white leading-tight uppercase">
+          <h2 class="text-3xl md:text-5xl font-black text-white leading-tight uppercase tracking-tight">
             Quality 3D Prints.<br/><span class="text-red-500">Real Solutions.</span>
           </h2>
-          <p class="text-slate-300 text-sm md:text-base leading-relaxed">
+          <p class="text-slate-200 text-sm md:text-base leading-relaxed drop-shadow-sm">
             From patented magnetic paint shields and modular post caps to custom backlit lithophanes and collectible characters, we bring practical 3D printing ideas to life.
           </p>
 
           <!-- Badges Bar -->
-          <div class="pt-4 flex flex-wrap justify-center md:justify-start gap-6 text-xs font-bold text-slate-200">
+          <div class="pt-4 flex flex-wrap justify-center md:justify-start gap-6 text-xs font-bold text-slate-100">
             <div class="flex items-center gap-2">
               <span class="text-red-500 text-base">✔</span> High Quality 3D Prints
             </div>
@@ -169,7 +174,7 @@
         </div>
 
         <!-- Action Callout Box -->
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl max-w-sm text-center space-y-4 shadow-xl">
+        <div class="bg-slate-900/80 backdrop-blur-md border border-white/20 p-6 rounded-2xl max-w-sm text-center space-y-4 shadow-2xl">
           <h3 class="text-lg font-bold text-white">Have a Project or Custom Order in Mind?</h3>
           <p class="text-xs text-slate-300">Looking for a custom lithophane photo print or specific batch hardware order?</p>
           <button onclick="navigateTo('lithophane')" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-xl shadow text-sm transition-colors cursor-pointer">
